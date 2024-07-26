@@ -34,6 +34,14 @@ class LoginCubit extends Cubit<LoginState> {
     emit(ChangePasswordEyeShape());
   }
 
+  bool termsCheckBoxValue=false;
+
+  changeTermsCheckBoxValue()
+  {
+    termsCheckBoxValue=!termsCheckBoxValue;
+    emit(CheckBoxchangedState());
+
+  }
 
   loginFun({required String email,required String password}) async
   {

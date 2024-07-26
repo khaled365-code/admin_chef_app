@@ -5,9 +5,8 @@ import 'package:admin_chef_app/features/auth/presentation/cubits/login_cubit/log
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/auth/presentation/views/admin_login_screen.dart';
-import '../../features/auth/presentation/views/home_screen.dart';
+import '../../features/auth/presentation/views/main_dashboard_screen.dart';
 
 class AdminRouter {
 
@@ -20,9 +19,9 @@ class AdminRouter {
               create: (context) => LoginCubit(authRepoImplementation: serviceLocator.get<AuthRepoImplementation>()),
               child: AdminLoginScreen(),
             ),);
-      case AdminRoutes.adminHomeScreen:
+      case AdminRoutes.mainDashboardScreen:
         return MaterialPageRoute(builder: (context) =>
-            HomeScreen(),);
+            MainDashboardScreen(),);
     }
   }
 
