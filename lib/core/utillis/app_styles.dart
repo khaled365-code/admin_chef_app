@@ -17,6 +17,22 @@ class AppTextStyles
       fontFamily: 'Inter',
     );
   }
+  static  TextStyle bold18(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, 18),
+      fontWeight: FontWeightHelper.bold,
+      fontFamily: 'Playfair Display',
+    );
+  }
+  static  TextStyle bold23(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, 23),
+      fontWeight: FontWeightHelper.bold,
+      fontFamily: 'Playfair Display',
+    );
+  }
 
   static  TextStyle regular14_6(BuildContext context)
   {
@@ -36,12 +52,29 @@ class AppTextStyles
     );
   }
 
+  static  TextStyle regular10(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context,10),
+      fontWeight: FontWeightHelper.normal,
+      fontFamily: 'Poppins',
+    );
+  }
+
   static  TextStyle regular16(BuildContext context)
   {
     return TextStyle(
       fontSize: getResponsiveFontSize(context,16),
       fontWeight: FontWeightHelper.normal,
       fontFamily: 'Space Grotesk',
+    );
+  }
+  static  TextStyle regular13(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context,13),
+      fontWeight: FontWeightHelper.normal,
+      fontFamily: 'Poppins',
     );
   }
   static  TextStyle medium16(BuildContext context)
@@ -77,6 +110,23 @@ class AppTextStyles
       fontSize: getResponsiveFontSize(context,20),
       fontWeight: FontWeightHelper.semiBold,
       fontFamily: 'Manrope',
+    );
+  }
+  static  TextStyle semiBold16(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context,16),
+      fontWeight: FontWeightHelper.semiBold,
+      fontFamily: 'Poppins',
+    );
+  }
+
+  static  TextStyle semiBold14(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context,14),
+      fontWeight: FontWeightHelper.semiBold,
+      fontFamily: 'Poppins',
     );
   }
 
@@ -116,7 +166,7 @@ class AppTextStyles
       }
     else
       {
-        return width/1000;
+        return width/1500;
       }
 
 
