@@ -33,8 +33,21 @@ class CustomDashboardDrawer extends StatelessWidget {
                         {
                           case 0:
                             MainDashboardCubit.get(context).allSystemMealsModel=null;
+                            MainDashboardCubit.get(context).allChefsData=null;
+                            break;
                           case 1:
+                            MainDashboardCubit.get(context).allChefsData=null;
                             mainDashboardCubit.getAllMealsFun();
+                            break;
+                          case 2:
+                            MainDashboardCubit.get(context).allSystemMealsModel=null;
+                            MainDashboardCubit.get(context).getAllSystemChefsFun();
+                            break;
+                          case 3:
+                            MainDashboardCubit.get(context).allSystemMealsModel=null;
+                            MainDashboardCubit.get(context).allChefsData=null;
+                            MainDashboardCubit.get(context).getChefRequestDesign();
+
                         }
                       },
                       drawerDataModel: mainDashboardCubit.firstDrawerDataList[index]),

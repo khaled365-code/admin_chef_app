@@ -10,6 +10,14 @@ class EndPoints
 
   static const String getAllMealsEndPoint='$baseUrl/admin/get-meals?status=all';
 
+  static const String getAllSystemChefsEndPoint='$baseUrl/admin/get-chefs?status=all';
+
+  static  String dealWithChefRequestEndPoint({required String chefId,required String status})
+  {
+
+    return '$baseUrl/admin/deal-with-chef-request/$chefId?status=$status';
+  }
+
 
 
 

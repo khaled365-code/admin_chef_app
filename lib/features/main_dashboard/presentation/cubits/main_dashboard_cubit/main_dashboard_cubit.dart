@@ -3,11 +3,13 @@ import 'package:admin_chef_app/features/main_dashboard/data/models/all_system_me
 import 'package:admin_chef_app/features/main_dashboard/data/models/drawer_data_model/drawer_data_model.dart';
 import 'package:admin_chef_app/features/main_dashboard/data/repos/dashboard_repo_implementation.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../core/utillis/app_assets.dart';
 import '../../../data/models/categories_data_model.dart';
+import '../../../data/models/chefs_data/all_chefs_data_model.dart';
 
 part 'main_dashboard_state.dart';
 
@@ -124,19 +126,6 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   int currentMealIndex=0;
 
   updateSelectedMeal({required int index})
@@ -146,6 +135,47 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
   }
 
 
+  AllChefsDataModel? allChefsData;
+
+  getAllSystemChefsFun()async
+  {
+    emit(GetAllChefsLoadingState());
+    final result=await dashBoardRepoImplementation.getAllSystemChefs();
+    result.fold((errorModel) {
+     emit(GetAllChefsFailureState(errorModel: errorModel));
+    },(AllChefsDataModel) {
+      emit(GetAllChefsSuccessState(allChefsDataModel: AllChefsDataModel));
+      allChefsData=AllChefsDataModel;
+    }, );
+
+  }
+  getChefRequestDesign()
+  {
+    emit(PerformChefRequestState());
+  }
+
+  TextEditingController chefIdForControllerForChefRequest=TextEditingController();
+  TextEditingController statusControllerForChefRequest=TextEditingController();
+
+  GlobalKey<FormState>dealWithChefRequestFormKey=GlobalKey();
+
+
+  dealWithChefRequestFun({required String chefId, required String status})async
+  {
+    emit(DealWithChefRequestLoadingState());
+    final result=await dashBoardRepoImplementation.dealWithChefRequest(chefId: chefId, status: status);
+
+    result.fold(
+        (errorModel)
+          {
+          emit(DealWithChefRequestFailureState(errorModel: errorModel));
+          },
+          (message)
+          {
+            emit(DealWithChefRequestSuccessState(successMessage: message));
+          });
+
+  }
 
 
 }

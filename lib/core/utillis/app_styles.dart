@@ -42,6 +42,14 @@ class AppTextStyles
       fontFamily: 'Poppins',
     );
   }
+  static  TextStyle regular14(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, 14),
+      fontWeight: FontWeightHelper.normal,
+      fontFamily: 'Poppins',
+    );
+  }
 
   static  TextStyle regular20(BuildContext context)
   {
@@ -69,6 +77,14 @@ class AppTextStyles
       fontFamily: 'Space Grotesk',
     );
   }
+  static  TextStyle regular15(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context,15),
+      fontWeight: FontWeightHelper.normal,
+      fontFamily: 'Poppins',
+    );
+  }
   static  TextStyle regular13(BuildContext context)
   {
     return TextStyle(
@@ -86,14 +102,7 @@ class AppTextStyles
     );
   }
 
-  static  TextStyle regular15(BuildContext context)
-  {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context,15),
-      fontWeight: FontWeightHelper.normal,
-      fontFamily: 'Space Grotesk',
-    );
-  }
+
 
   static  TextStyle bold16(BuildContext context)
   {
@@ -116,6 +125,14 @@ class AppTextStyles
   {
     return TextStyle(
       fontSize: getResponsiveFontSize(context,16),
+      fontWeight: FontWeightHelper.semiBold,
+      fontFamily: 'Poppins',
+    );
+  }
+  static  TextStyle semiBold18(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context,18),
       fontWeight: FontWeightHelper.semiBold,
       fontFamily: 'Poppins',
     );

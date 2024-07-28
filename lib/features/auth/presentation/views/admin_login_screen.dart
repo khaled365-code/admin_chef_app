@@ -32,7 +32,7 @@ class AdminLoginScreen extends StatelessWidget {
     if(state is LoginSuccessState)
       {
         buildScaffoldMessenger(context: context, msg: 'You logged in successfully');
-        navigate(context: context, route: AdminRoutes.mainDashboardScreen,replacement: true);
+        navigate(context: context, route: AdminRoutes.mainDashboardScreen);
       }
     if(state is LoginFailureState)
       {
