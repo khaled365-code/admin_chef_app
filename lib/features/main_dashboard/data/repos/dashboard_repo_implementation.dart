@@ -58,6 +58,19 @@ class DashBoardRepoImplementation implements DashBoardRepo
     }
   }
 
+  @override
+  Future<Either<ErrorModel, String>> dealWithMealRequest({required String mealId, required String status}) async {
+
+    try{
+      final response=await api.post(EndPoints.dealWithMealRequestEndPoint(mealId: mealId, status: status));
+      return Right(response[ApiKeys.message]);
+    }
+    on ServerException catch(e)
+    {
+      return Left(e.errorModel);
+    }
+  }
+
 
 
 

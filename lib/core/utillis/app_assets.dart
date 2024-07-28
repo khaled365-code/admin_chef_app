@@ -27,7 +27,7 @@ class ImageConstants
   static const String chefsIcon='assets/icons/chefs_icon.svg';
   static const String logoutIcon='assets/icons/logout_icon.svg';
   static const String trashIcon='assets/icons/trash_icon.svg';
-  static const String chefIcon='assets/icons/user-chef.svg';
+  static const String chefIcon='assets/icons/user_chef_icon.svg';
   static const String viewAllNextIcon='assets/icons/view_all_next_icon.svg';
 
 

@@ -18,6 +18,12 @@ class EndPoints
     return '$baseUrl/admin/deal-with-chef-request/$chefId?status=$status';
   }
 
+  static  String dealWithMealRequestEndPoint({required String mealId,required String status})
+  {
+
+    return '$baseUrl/admin/deal-with-meal-request/$mealId?status=$status';
+  }
+
 
 
 

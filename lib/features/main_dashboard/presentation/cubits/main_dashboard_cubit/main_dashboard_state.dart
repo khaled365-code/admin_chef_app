@@ -5,6 +5,8 @@ sealed class MainDashboardState {}
 
 final class MainDashboardInitial extends MainDashboardState {}
 
+final class PerformMealRequestDesignState extends MainDashboardState {}
+
 
 final class DealWithChefRequestLoadingState extends MainDashboardState {}
 
@@ -22,8 +24,25 @@ final class DealWithChefRequestFailureState extends MainDashboardState {
 
 }
 
+final class DealWithMealRequestLoadingState extends MainDashboardState {}
 
-final class PerformChefRequestState extends MainDashboardState {}
+
+final class DealWithMealRequestSuccessState extends MainDashboardState {
+  final String successMessage;
+  DealWithMealRequestSuccessState({required this.successMessage});
+}
+
+
+final class DealWithMealRequestFailureState extends MainDashboardState {
+
+  final ErrorModel errorModel;
+  DealWithMealRequestFailureState({required this.errorModel});
+
+}
+
+
+
+final class PerformChefRequestDesignState extends MainDashboardState {}
 
 final class GetAllChefsLoadingState extends MainDashboardState {}
 

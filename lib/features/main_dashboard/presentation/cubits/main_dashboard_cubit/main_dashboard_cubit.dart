@@ -31,6 +31,7 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
   
   
   List<DrawerDataModel>secondDrawerDataList=[
+    DrawerDataModel(image: ImageConstants.trashIcon, text: 'Delete Meal'),
     DrawerDataModel(image: ImageConstants.trashIcon, text: 'Delete Chef'),
     DrawerDataModel(image: ImageConstants.logoutIcon, text: 'Logout account'),
   ];
@@ -151,7 +152,7 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
   }
   getChefRequestDesign()
   {
-    emit(PerformChefRequestState());
+    emit(PerformChefRequestDesignState());
   }
 
   TextEditingController chefIdForControllerForChefRequest=TextEditingController();
@@ -175,6 +176,30 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
             emit(DealWithChefRequestSuccessState(successMessage: message));
           });
 
+  }
+
+
+
+  //
+
+  getMealRequestDesign()
+  {
+    emit(PerformMealRequestDesignState());
+  }
+  TextEditingController mealIdControllerForMealRequest=TextEditingController();
+  TextEditingController mealStatusControllerForMealRequest=TextEditingController();
+
+  GlobalKey<FormState>dealWithMealRequestFormKey=GlobalKey();
+
+  dealWithMealRequestFun({required String mealId, required String status})async
+  {
+    emit(DealWithMealRequestLoadingState());
+    final result=await dashBoardRepoImplementation.dealWithMealRequest(mealId: mealId, status: status);
+    result.fold((errorModel) {
+      emit(DealWithMealRequestFailureState(errorModel: errorModel));
+    }, (message) {
+      emit(DealWithMealRequestSuccessState(successMessage: message));
+    });
   }
 
 

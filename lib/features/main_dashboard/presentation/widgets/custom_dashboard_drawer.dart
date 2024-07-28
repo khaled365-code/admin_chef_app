@@ -24,7 +24,7 @@ class CustomDashboardDrawer extends StatelessWidget {
                 ),
                 SpaceWidget(height: 24,),
                 ...List.generate(mainDashboardCubit.firstDrawerDataList.length, (index) => Padding(
-                  padding: const EdgeInsetsDirectional.only(bottom: 20,start: 34),
+                  padding: const EdgeInsetsDirectional.only(bottom: 10,start: 34),
                   child: DrawerListTile(
                     onListTileTap: ()
                       {
@@ -47,6 +47,11 @@ class CustomDashboardDrawer extends StatelessWidget {
                             MainDashboardCubit.get(context).allSystemMealsModel=null;
                             MainDashboardCubit.get(context).allChefsData=null;
                             MainDashboardCubit.get(context).getChefRequestDesign();
+                          case 4:
+                            MainDashboardCubit.get(context).allSystemMealsModel=null;
+                            MainDashboardCubit.get(context).allChefsData=null;
+                            MainDashboardCubit.get(context).getMealRequestDesign();
+
 
                         }
                       },
@@ -56,7 +61,7 @@ class CustomDashboardDrawer extends StatelessWidget {
                 ...List.generate(
                     mainDashboardCubit.secondDrawerDataList.length,
                     (index) => Padding(
-                      padding: const EdgeInsetsDirectional.only(bottom: 20,start: 34),
+                      padding: const EdgeInsetsDirectional.only(bottom: 10,start: 34),
                       child: DrawerListTile(
                         drawerDataModel: mainDashboardCubit.secondDrawerDataList[index],
                         onListTileTap: ()
@@ -65,7 +70,7 @@ class CustomDashboardDrawer extends StatelessWidget {
                         },
                       ),
                     ),),
-                SpaceWidget(height: 24,),
+                SpaceWidget(height: 14,),
 
 
               ],

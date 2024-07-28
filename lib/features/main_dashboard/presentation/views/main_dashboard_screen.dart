@@ -16,6 +16,7 @@ import '../widgets/meal_container_item.dart';
 import '../widgets/banner_container_widget.dart';
 import '../widgets/custom_dashboard_drawer.dart';
 import '../widgets/dashboard_app_bar.dart';
+import '../widgets/meal_request_widget.dart';
 import '../widgets/offers_and_categories_section.dart';
 
 class MainDashboardScreen extends StatelessWidget {
@@ -214,12 +215,18 @@ class MainDashboardScreen extends StatelessWidget {
 
                                   );
                                 }
-                              if(state is PerformChefRequestState ||
+                              if(state is PerformChefRequestDesignState ||
                                   state is DealWithChefRequestFailureState ||
                                   state is DealWithChefRequestSuccessState || state is DealWithChefRequestLoadingState)
                                 {
                                   return ChefRequestWidget();
                                 }
+                              if(state is PerformMealRequestDesignState ||
+                                  state is DealWithMealRequestLoadingState ||
+                                  state is DealWithMealRequestFailureState || state is DealWithMealRequestSuccessState)
+                              {
+                                return MealRequestWidget();
+                              }
                               else
                                 {
                                   return Column(
