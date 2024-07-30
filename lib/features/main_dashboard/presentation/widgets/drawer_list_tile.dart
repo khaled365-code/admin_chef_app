@@ -18,6 +18,7 @@ class DrawerListTile extends StatelessWidget {
     return GestureDetector(
       onTap: onListTileTap,
       child: ListTile(
+        contentPadding: EdgeInsetsDirectional.zero,
         leading: Container(
           width: 40,
           height: 40,
@@ -29,8 +30,9 @@ class DrawerListTile extends StatelessWidget {
         title: FittedBox(
           fit: BoxFit.scaleDown,
           alignment: AlignmentDirectional.centerStart,
-          child: Text(drawerDataModel.text,style: AppTextStyles.bold16(context).copyWith(
-            color: drawerDataModel.itemIsSelected==false?AppColors.c07143B:AppColors.primaryColor
+          child: Text(drawerDataModel.text,style: AppTextStyles.regular16(context).copyWith(
+            color: drawerDataModel.itemIsSelected==false?AppColors.c959895:AppColors.primaryColor,
+            fontFamily: 'Poppins',
           ),),
         ),
       ),

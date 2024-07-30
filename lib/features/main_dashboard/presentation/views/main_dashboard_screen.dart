@@ -1,15 +1,16 @@
 
 
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
-import 'package:admin_chef_app/features/main_dashboard/presentation/widgets/shimmer_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utillis/app_colors.dart';
 import '../../../../core/utillis/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 import '../widgets/chef_data_container.dart';
 import '../widgets/chef_request_widget.dart';
+import '../widgets/chef_shimmer_container.dart';
 import '../widgets/delete_chef_widget.dart';
 import '../widgets/delete_meal_widget.dart';
 import '../widgets/logout_design_widget.dart';
@@ -18,6 +19,7 @@ import '../widgets/banner_container_widget.dart';
 import '../widgets/custom_dashboard_drawer.dart';
 import '../widgets/dashboard_app_bar.dart';
 import '../widgets/meal_request_widget.dart';
+import '../widgets/meal_shimmer_container.dart';
 import '../widgets/offers_and_categories_section.dart';
 
 class MainDashboardScreen extends StatelessWidget {
@@ -39,13 +41,14 @@ class MainDashboardScreen extends StatelessWidget {
             child: Expanded(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Expanded(
                     flex: 2,
                       child: CustomDashboardDrawer()),
                   Container(
                     color: AppColors.cFCF6EE,
-                    width: 30,
+                    width: 40.w,
                   ),
                   Expanded(
                     flex: 5,
@@ -55,7 +58,7 @@ class MainDashboardScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(top: 30),
+                              padding: EdgeInsets.only(top: 70.h),
                               child: BannerContainerWidget(),
                             ),
                             BlocBuilder<MainDashboardCubit, MainDashboardState>(
@@ -71,7 +74,7 @@ class MainDashboardScreen extends StatelessWidget {
                                      child: Column(
                                          crossAxisAlignment: CrossAxisAlignment.start,
                                          children: [
-                                           SpaceWidget(height: 24,),
+                                           SpaceWidget(height: 72,),
                                            Text('Please wait',
                                              style: AppTextStyles.bold23(context).copyWith(
                                                  color: AppColors.c07143B
@@ -88,8 +91,8 @@ class MainDashboardScreen extends StatelessWidget {
                                                mainAxisExtent: 290,
                                              ),
                                              itemBuilder: (context, index) =>
-                                                 ShimmerContainer(),),
-                                           SpaceWidget(height: 64,),
+                                                 ChefShimmerContainer(),),
+                                           SpaceWidget(height: 72,),
 
 
 
@@ -99,6 +102,7 @@ class MainDashboardScreen extends StatelessWidget {
                                }
                               if(MainDashboardCubit.get(context).allChefsData!=null)
                                 {
+
                                   return Container(
                                       decoration: BoxDecoration(
                                         color: AppColors.cFCF6EE,
@@ -107,7 +111,7 @@ class MainDashboardScreen extends StatelessWidget {
                                       child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            SpaceWidget(height: 24,),
+                                            SpaceWidget(height: 72,),
                                             Text('All Chefs',
                                               style: AppTextStyles.bold23(context).copyWith(
                                                   color: AppColors.c07143B
@@ -127,7 +131,7 @@ class MainDashboardScreen extends StatelessWidget {
                                               ChefDataContainer(
                                                 chefsData: MainDashboardCubit.get(context).allChefsData!.chefs![index],
                                               )),
-                                            SpaceWidget(height: 64,),
+                                            SpaceWidget(height: 72,),
 
 
 
@@ -145,25 +149,25 @@ class MainDashboardScreen extends StatelessWidget {
                                       child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            SpaceWidget(height: 24,),
+                                            SpaceWidget(height: 72,),
                                             Text('Please wait',
                                               style: AppTextStyles.bold23(context).copyWith(
                                                   color: AppColors.c07143B
                                               ),),
-                                            SpaceWidget(height: 64,),
+                                            SpaceWidget(height: 200,),
                                             GridView.builder(
                                               shrinkWrap: true,
                                               physics: NeverScrollableScrollPhysics(),
                                               itemCount: 10,
                                               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 2,
-                                                crossAxisSpacing: 40,
-                                                mainAxisSpacing: 40,
-                                                mainAxisExtent: 290,
+                                                crossAxisSpacing: 50,
+                                                mainAxisSpacing: 110,
+                                                mainAxisExtent: 300,
                                               ),
                                               itemBuilder: (context, index) =>
-                                                  ShimmerContainer(),),
-                                            SpaceWidget(height: 64,),
+                                                  MealShimmerContainer(),),
+                                            SpaceWidget(height: 72,),
 
 
 
@@ -181,20 +185,21 @@ class MainDashboardScreen extends StatelessWidget {
                                       child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            SpaceWidget(height: 24,),
+                                            SpaceWidget(height: 72,),
                                             Text('All Meals',
                                               style: AppTextStyles.bold23(context).copyWith(
                                                   color: AppColors.c07143B
                                               ),),
-                                            SpaceWidget(height: 64,),
+                                            SpaceWidget(height: 200,),
                                             GridView.builder(
+                                              padding: EdgeInsetsDirectional.zero,
                                               shrinkWrap: true,
                                               physics: NeverScrollableScrollPhysics(),
                                               itemCount: MainDashboardCubit.get(context).allSystemMealsModel!.meals!.length,
                                               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 2,
-                                                crossAxisSpacing: 25,
-                                                mainAxisSpacing: 40,
+                                                crossAxisSpacing: 50,
+                                                mainAxisSpacing: 110,
                                                 mainAxisExtent: 300,
                                               ),
                                               itemBuilder: (context, index) =>
@@ -204,11 +209,12 @@ class MainDashboardScreen extends StatelessWidget {
                                                       MainDashboardCubit.get(context).updateSelectedMeal(index: index);
                                                     },
                                                     child: MealContainerItem(
+                                                      mealImage: MainDashboardCubit.get(context).mealsImages[index],
                                                       containerISSelected: MainDashboardCubit.get(context).currentMealIndex==index,
                                                       systemMeals:MainDashboardCubit.get(context).allSystemMealsModel!.meals![index],
                                                     ),
                                                   ),),
-                                            SpaceWidget(height: 64,),
+                                            SpaceWidget(height: 72,),
 
 
 
@@ -255,8 +261,8 @@ class MainDashboardScreen extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children:
                                     [
-                                      SpaceWidget(height: 24,),
-                                      Text('Main Dashboard',
+                                      SpaceWidget(height: 72),
+                                      Text('Home',
                                         style: AppTextStyles.bold23(context).copyWith(
                                             color: AppColors.c07143B
                                         ),),
@@ -270,7 +276,7 @@ class MainDashboardScreen extends StatelessWidget {
                         )
                       )),
                   Container(
-                    width: 30,
+                    width: 40.w,
                     color: AppColors.cFCF6EE,
                   ),
                   Expanded(

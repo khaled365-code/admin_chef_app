@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/commons/functions/common_functions.dart';
 import '../../../../core/utillis/app_colors.dart';
+import '../../../../core/utillis/app_styles.dart';
 import '../../../../core/widgets/custom_oulined_text_field.dart';
 import '../../../../core/widgets/progress_loading_indicator.dart';
 import '../../../../core/widgets/shared_button.dart';
@@ -43,7 +44,7 @@ class MealRequestWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 64,),
+          SpaceWidget(height: 72,),
           CustomOulinedTextField(
             controller: MainDashboardCubit.get(context).mealIdControllerForMealRequest,
             hintText: 'please write meal id here !',
@@ -52,7 +53,7 @@ class MealRequestWidget extends StatelessWidget {
             validator: (value){
               if(value!.isEmpty)
               {
-                return 'you must write meal id !';
+                return 'you must specify meal id !';
               }
               else
               {
@@ -61,17 +62,17 @@ class MealRequestWidget extends StatelessWidget {
             },
             onFieldSubmitted: (value){},
           ),
-          SpaceWidget(height: 32,),
+          SpaceWidget(height: 52,),
           CustomOulinedTextField(
             controller: MainDashboardCubit.get(context).mealStatusControllerForMealRequest,
             validator: (value){
               if(value!.isEmpty)
               {
-                return 'you must write one status';
+                return 'you must select one status';
               }
               if(value.contains(' '))
               {
-                return 'you must write one status only';
+                return 'you must select one status only';
               }
               else
               {
@@ -83,17 +84,21 @@ class MealRequestWidget extends StatelessWidget {
             labelText: 'Status',
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
-          SpaceWidget(height: 32,),
+          SpaceWidget(height: 68,),
           state is DealWithMealRequestLoadingState?
           Center(child: CustomCircularProgressLoadingIndicator(),):
           SharedButton(
             btnSize: WidgetStatePropertyAll(
-              Size(188, 64),
+              Size(188, 44),
             ),
-            borderRadiusValue: 6,
+            borderRadiusValue: 24,
             btnText: 'Modify',
             btnColor: WidgetStatePropertyAll(
                 AppColors.primaryColor
+            ),
+            btnTextStyle: AppTextStyles.regular16(context).copyWith(
+                color: AppColors.white,
+                fontFamily: 'Poppins'
             ),
             onPressessed: (){
               if(MainDashboardCubit.get(context).dealWithMealRequestFormKey.currentState!.validate())

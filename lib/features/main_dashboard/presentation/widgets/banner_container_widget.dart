@@ -1,9 +1,13 @@
 
 
 
+import 'package:admin_chef_app/core/database/api/api_keys.dart';
+import 'package:admin_chef_app/core/database/cache/cache_helper.dart';
 import 'package:admin_chef_app/core/utillis/app_assets.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
+import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utillis/app_colors.dart';
 import '../../../../core/utillis/app_styles.dart';
@@ -17,40 +21,45 @@ class BannerContainerWidget extends StatelessWidget {
       aspectRatio: 1099/390,
       child: Container(
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(24),
             image: DecorationImage(
                 image: AssetImage(
                   ImageConstants.bannerImage,)),
         ),
           child: Padding(
-          padding: const EdgeInsetsDirectional.only(start: 82,),
+          padding:  EdgeInsetsDirectional.only(start: 82.w,),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacer(),
-            Text('Hello, Anas Mohamed',style: AppTextStyles.bold23(context).copyWith(
+            Text('Hello, ${CacheHelper().getData(key: ApiKeys.name)}',style: AppTextStyles.bold23(context).copyWith(
             color: AppColors.c07143B
           )),
-              SpaceWidget(height: 20,),
+              SpaceWidget(height: 24,),
               RichText(text: TextSpan(
                 children: [
                       TextSpan(
                           text: 'Get ',
-                          style: AppTextStyles.semiBold16(context)
+                          style: AppTextStyles.semiBold14(context)
                               .copyWith(color: AppColors.c959895)),
                       TextSpan(
                           text: 'Full control ',
-                          style: AppTextStyles.semiBold16(context)
+                          style: AppTextStyles.semiBold14(context)
                               .copyWith(color: AppColors.primaryColor)),
                       TextSpan(
                           text: 'on chef app',
-                          style: AppTextStyles.semiBold16(context)
+                          style: AppTextStyles.semiBold14(context)
                               .copyWith(color: AppColors.c959895))
                     ],
               )),
-              SpaceWidget(height: 20,),
+              SpaceWidget(height: 24,),
               ElevatedButton(
-                  onPressed: (){},
-                  child: Center(child: FittedBox(
+                  onPressed: (){
+                    MainDashboardCubit.get(context).allChefsData=null;
+                    MainDashboardCubit.get(context).getAllMealsFun();
+                  },
+                  child: Center(
+                      child: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text('Check Meals',style: AppTextStyles.regular16(context).copyWith(
                       color: AppColors.white,

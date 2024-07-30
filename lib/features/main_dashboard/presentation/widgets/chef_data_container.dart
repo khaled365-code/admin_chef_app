@@ -4,6 +4,7 @@
 import 'package:admin_chef_app/core/utillis/app_styles.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utillis/app_assets.dart';
 import '../../../../core/utillis/app_colors.dart';
@@ -18,7 +19,7 @@ class ChefDataContainer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
           color: AppColors.cF3F4F6
         )
@@ -26,7 +27,7 @@ class ChefDataContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 20,),
+          SpaceWidget(height: 60,),
           Container(
             width: 113,
             height: 113,
@@ -35,7 +36,7 @@ class ChefDataContainer extends StatelessWidget {
               image: DecorationImage(image: AssetImage(ImageConstants.chefBigImage),fit: BoxFit.fill)
             ),
           ),
-          SpaceWidget(height: 20,),
+          SpaceWidget(height: 40,),
           Text(chefsData.name!,style: AppTextStyles.semiBold14(context).copyWith(
             color: AppColors.c898E99
           ),),
@@ -43,15 +44,15 @@ class ChefDataContainer extends StatelessWidget {
           Text(chefsData.email!,style: AppTextStyles.regular10(context).copyWith(
               color: AppColors.primaryColor
           ),),
-          SpaceWidget(height: 5,),
+          SpaceWidget(height: 10,),
           Text('+20 ${chefsData.phone!}',style: AppTextStyles.regular10(context).copyWith(
               color: AppColors.primaryColor
           ),),
-          SpaceWidget(height: 5,),
+          SpaceWidget(height: 10,),
           Text('Id : ${chefsData.id!}',style: AppTextStyles.regular10(context).copyWith(
               color: AppColors.primaryColor
           ),),
-          SpaceWidget(height: 5,),
+          SpaceWidget(height: 10,),
           Text('Chef Status : ${chefsData.status!}',style: AppTextStyles.regular10(context).copyWith(
               color: AppColors.primaryColor
           ),),

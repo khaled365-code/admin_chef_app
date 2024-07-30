@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utillis/app_assets.dart';
 import '../../../../core/utillis/app_colors.dart';
@@ -22,7 +23,7 @@ class OffersContainer extends StatelessWidget {
                   color: AppColors.white.withOpacity(.4)
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.only(bottom: 24),
+                padding:  EdgeInsetsDirectional.only(bottom: 24.h),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +31,7 @@ class OffersContainer extends StatelessWidget {
                     [
                       FittedBox(
                         fit: BoxFit.scaleDown,
-                        child: Text('Our Perfect 100 % Meals',
+                        child: Text('Our Perfect Meals',
                             style: AppTextStyles.bold18(context)
                                 .copyWith(color: AppColors.c07143B)),
                       ),
@@ -43,10 +44,10 @@ class OffersContainer extends StatelessWidget {
               ),
             )),
         PositionedDirectional(
-            bottom: 50,
-            start: 91,
-            end: 91,
-            child: Image.asset(ImageConstants.bigBurgerImage,width: 299,height: 295,))
+            bottom: 130.h,
+            start: 91.w,
+            end: 91.w,
+            child: Image.asset(ImageConstants.bigBurgerImage,width: 399.w,height: 800.h,fit: BoxFit.contain,))
       ],
     );
   }

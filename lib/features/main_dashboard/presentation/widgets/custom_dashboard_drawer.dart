@@ -6,8 +6,10 @@ import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utillis/app_colors.dart';
+import '../../../../core/widgets/line_widget.dart';
 import 'drawer_list_tile.dart';
 
 class CustomDashboardDrawer extends StatelessWidget {
@@ -22,13 +24,12 @@ class CustomDashboardDrawer extends StatelessWidget {
             color: AppColors.white,
             child: Column(
               children: [
-                Divider(
-                  color: AppColors.cE9ECEF,
-                  height: 10,
+                LineWidget(
+                  height: 4,
                 ),
                 SpaceWidget(height: 24,),
                 ...List.generate(mainDashboardCubit.firstDrawerDataList.length, (index) => Padding(
-                  padding: const EdgeInsetsDirectional.only(bottom: 10,start: 34),
+                  padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w),
                   child: DrawerListTile(
                     onListTileTap: ()
                       {
@@ -59,9 +60,6 @@ class CustomDashboardDrawer extends StatelessWidget {
                             MainDashboardCubit.get(context).getMealRequestDesign();
                             break;
 
-
-
-
                         }
                       },
                       drawerDataModel: mainDashboardCubit.firstDrawerDataList[index]),
@@ -70,7 +68,7 @@ class CustomDashboardDrawer extends StatelessWidget {
                 ...List.generate(
                     mainDashboardCubit.secondDrawerDataList.length,
                     (index) => Padding(
-                      padding: const EdgeInsetsDirectional.only(bottom: 10,start: 34),
+                      padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w),
                       child: DrawerListTile(
                         drawerDataModel: mainDashboardCubit.secondDrawerDataList[index],
                         onListTileTap: ()
@@ -94,15 +92,11 @@ class CustomDashboardDrawer extends StatelessWidget {
                               MainDashboardCubit.get(context).getLogoutDesign();
                               MainDashboardCubit.get(context).logoutAdminFun();
                               break;
-
-
-
-
                           }
                         },
                       ),
                     ),),
-                SpaceWidget(height: 14,),
+                SpaceWidget(height: 24,),
 
 
               ],

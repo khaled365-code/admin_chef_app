@@ -21,11 +21,11 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
  final DashBoardRepoImplementation dashBoardRepoImplementation;
 
   List<DrawerDataModel> firstDrawerDataList=[
-    DrawerDataModel(image: ImageConstants.dashBoardIcon, text: 'Dashboard',itemIsSelected: true),
+    DrawerDataModel(image: ImageConstants.dashBoardIcon, text: 'Home',itemIsSelected: true),
     DrawerDataModel(image: ImageConstants.mealIcon, text: 'System Meals'),
     DrawerDataModel(image: ImageConstants.chefsIcon, text: 'System Chefs'),
-    DrawerDataModel(image: ImageConstants.dealWithChefRequestIcon, text: 'Accept Chef Request'),
-    DrawerDataModel(image: ImageConstants.orderIcon, text: 'Accept Meal Request'),
+    DrawerDataModel(image: ImageConstants.dealWithChefRequestIcon, text: 'Chefs Requests'),
+    DrawerDataModel(image: ImageConstants.orderIcon, text: 'Meals Requests'),
 
   ];
   
@@ -98,6 +98,65 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
     CategoriesDataModel(categoryName: 'Desserts'),
     CategoriesDataModel(categoryName: 'Baked goods'),
     CategoriesDataModel(categoryName: 'Snacks')
+  ];
+
+
+  List<String>mealsImages=[
+    ImageConstants.blackChocolateImage,
+    ImageConstants.cartImage1,
+    ImageConstants.cartImage2,
+    ImageConstants.cartImage3,
+    ImageConstants.cartImage4,
+    ImageConstants.filfilImage,
+    ImageConstants.meksaratImage,
+    ImageConstants.redPizzaImage,
+    ImageConstants.spaghettiImage,
+    ImageConstants.sweetsImage,
+    ImageConstants.vegetablePizzaImage,
+    ImageConstants.blackChocolateImage,
+    ImageConstants.cartImage1,
+    ImageConstants.cartImage2,
+    ImageConstants.cartImage3,
+    ImageConstants.cartImage4,
+    ImageConstants.filfilImage,
+    ImageConstants.meksaratImage,
+    ImageConstants.redPizzaImage,
+    ImageConstants.spaghettiImage,
+    ImageConstants.sweetsImage,
+    ImageConstants.vegetablePizzaImage,
+    ImageConstants.blackChocolateImage,
+    ImageConstants.cartImage1,
+    ImageConstants.cartImage2,
+    ImageConstants.cartImage3,
+    ImageConstants.cartImage4,
+    ImageConstants.filfilImage,
+    ImageConstants.meksaratImage,
+    ImageConstants.redPizzaImage,
+    ImageConstants.spaghettiImage,
+    ImageConstants.sweetsImage,
+    ImageConstants.vegetablePizzaImage,
+    ImageConstants.blackChocolateImage,
+    ImageConstants.cartImage1,
+    ImageConstants.cartImage2,
+    ImageConstants.cartImage3,
+    ImageConstants.cartImage4,
+    ImageConstants.filfilImage,
+    ImageConstants.meksaratImage,
+    ImageConstants.redPizzaImage,
+    ImageConstants.spaghettiImage,
+    ImageConstants.sweetsImage,
+    ImageConstants.vegetablePizzaImage,
+    ImageConstants.blackChocolateImage,
+    ImageConstants.cartImage1,
+    ImageConstants.cartImage2,
+    ImageConstants.cartImage3,
+    ImageConstants.cartImage4,
+    ImageConstants.filfilImage,
+    ImageConstants.meksaratImage,
+    ImageConstants.redPizzaImage,
+    ImageConstants.spaghettiImage,
+    ImageConstants.sweetsImage,
+    ImageConstants.vegetablePizzaImage
   ];
 
   int selectedCategoryIndex=0;

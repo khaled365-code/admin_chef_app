@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/commons/functions/common_functions.dart';
 import '../../../../core/utillis/app_colors.dart';
+import '../../../../core/utillis/app_styles.dart';
 import '../../../../core/widgets/custom_oulined_text_field.dart';
 import '../../../../core/widgets/progress_loading_indicator.dart';
 import '../../../../core/widgets/shared_button.dart';
@@ -21,7 +22,7 @@ class DeleteChefWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 64,),
+          SpaceWidget(height: 72,),
           CustomOulinedTextField(
             controller: MainDashboardCubit.get(context).deleteChefIdController,
             hintText: 'please enter chef id here !',
@@ -30,7 +31,7 @@ class DeleteChefWidget extends StatelessWidget {
             validator: (value){
               if(value!.isEmpty)
               {
-                return 'you must write chef id !';
+                return 'you must specify chef id !';
               }
               else
               {
@@ -39,7 +40,7 @@ class DeleteChefWidget extends StatelessWidget {
             },
             onFieldSubmitted: (value){},
           ),
-          SpaceWidget(height: 32,),
+          SpaceWidget(height: 68,),
           BlocConsumer<MainDashboardCubit, MainDashboardState>(
             listener: (context, state) {
               if(state is DeleteChefSuccessState)
@@ -66,10 +67,14 @@ class DeleteChefWidget extends StatelessWidget {
               }
               return SharedButton(
                 btnSize: WidgetStatePropertyAll(
-                  Size(188, 64),
+                  Size(188, 44),
                 ),
-                borderRadiusValue: 6,
+                borderRadiusValue: 24,
                 btnText: 'Delete',
+                btnTextStyle: AppTextStyles.regular16(context).copyWith(
+                    color: AppColors.white,
+                    fontFamily: 'Poppins'
+                ),
                 btnColor: WidgetStatePropertyAll(AppColors.primaryColor),
                 onPressessed: () {
                   if (MainDashboardCubit.get(context)

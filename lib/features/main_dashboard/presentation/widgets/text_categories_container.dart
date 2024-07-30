@@ -4,6 +4,7 @@ import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/utillis/app_assets.dart';
@@ -20,49 +21,27 @@ class TextCategoriesContainer extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             color: AppColors.white.withOpacity(.6),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(24.r),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SpaceWidget(height: 24,),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Row(
-                  children: [
-                    Text('Categories',
-                      style: AppTextStyles.bold18(context).copyWith(
-                          color: AppColors.c07143B
-                      ),),
-                    Spacer(),
-                    Text('View All',
-                      style: AppTextStyles.regular16(context).copyWith(
-                          color: AppColors.c07143B,
-                          fontFamily: 'Poppins'
-                      ),),
-                    SpaceWidget(width: 8,),
-                    Container(
-                      width: 24,
-                      height: 24,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.primaryColor
-                      ),
-                      child: Center(
-                        child: SvgPicture.asset(ImageConstants.viewAllNextIcon),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SpaceWidget(height: 24,),
+                padding:  EdgeInsetsDirectional.only(start: 24.w),
+                child: Text('Categories',
+                  style: AppTextStyles.bold16(context).copyWith(
+                      color: AppColors.c07143B,
+                  ),)),
+              SpaceWidget(height: 43,),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding:  EdgeInsets.symmetric(horizontal: 24.w),
                 child: Divider(
                   color: AppColors.cE9ECEF,
-                  thickness: 1,
+                  thickness: 2,
                 ),
               ),
-              SpaceWidget(height: 24,),
+              SpaceWidget(height: 43,),
               GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -70,8 +49,9 @@ class TextCategoriesContainer extends StatelessWidget {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     mainAxisSpacing: 24,
                     crossAxisSpacing: 32,
-                    crossAxisCount: 3, mainAxisExtent: 48),
-                padding: const EdgeInsetsDirectional.only(start: 24, end: 44),
+                    crossAxisCount: 3,
+                    mainAxisExtent: 48),
+                padding:  EdgeInsetsDirectional.only(start: 24.w, end: 24.w),
                 itemBuilder: (context, index) =>
                     GestureDetector(
                       onTap: () {
@@ -85,7 +65,7 @@ class TextCategoriesContainer extends StatelessWidget {
                             .categoriesList[index],
                       ),
                     ),),
-              SpaceWidget(height: 24,)
+              SpaceWidget(height: 43,),
 
 
             ],

@@ -21,7 +21,7 @@ class LogoutDesignWidget extends StatelessWidget {
           CacheHelper().clearData();
           Future.delayed(Duration(seconds: 5));
           buildScaffoldMessenger(context: context, msg: 'Logout successfully !');
-          Navigator.pop(context);
+          navigate(context: context, route: AdminRoutes.adminLoginScreen);
         }
         if(state is AdminLogoutFailureState)
         {
@@ -40,7 +40,7 @@ class LogoutDesignWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children:
           [
-            SpaceWidget(height: 64,),
+            SpaceWidget(height: 72,),
             Text('Logout From System',
               style: AppTextStyles.bold23(context).copyWith(
                   color: AppColors.c07143B

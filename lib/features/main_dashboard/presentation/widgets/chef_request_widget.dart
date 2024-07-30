@@ -2,6 +2,7 @@
 
 
 import 'package:admin_chef_app/core/commons/functions/common_functions.dart';
+import 'package:admin_chef_app/core/utillis/app_styles.dart';
 import 'package:admin_chef_app/core/widgets/custom_oulined_text_field.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
@@ -44,7 +45,7 @@ class ChefRequestWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 64,),
+          SpaceWidget(height: 72,),
           CustomOulinedTextField(
               controller: MainDashboardCubit.get(context).chefIdForControllerForChefRequest,
             hintText: 'please write chef id here !',
@@ -53,7 +54,7 @@ class ChefRequestWidget extends StatelessWidget {
             validator: (value){
               if(value!.isEmpty)
               {
-                return 'you must write chef id !';
+                return 'you must specify chef id !';
               }
               else
               {
@@ -62,17 +63,17 @@ class ChefRequestWidget extends StatelessWidget {
             },
             onFieldSubmitted: (value){},
           ),
-          SpaceWidget(height: 32,),
+          SpaceWidget(height: 52,),
           CustomOulinedTextField(
               controller: MainDashboardCubit.get(context).statusControllerForChefRequest,
             validator: (value){
               if(value!.isEmpty)
               {
-                return 'you must write and select one status';
+                return 'you must select one status';
               }
               if(value.contains(' '))
               {
-                return 'you must write one status only';
+                return 'you must select one status only';
               }
               else
               {
@@ -84,15 +85,19 @@ class ChefRequestWidget extends StatelessWidget {
             labelText: 'Status',
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
-          SpaceWidget(height: 32,),
+          SpaceWidget(height: 68,),
           state is DealWithChefRequestLoadingState?
           Center(child: CustomCircularProgressLoadingIndicator(),):
           SharedButton(
             btnSize: WidgetStatePropertyAll(
-              Size(188, 64),
+              Size(188, 44),
             ),
-            borderRadiusValue: 6,
+            borderRadiusValue: 24,
             btnText: 'Modify',
+            btnTextStyle: AppTextStyles.regular16(context).copyWith(
+              color: AppColors.white,
+              fontFamily: 'Poppins'
+            ),
             btnColor: WidgetStatePropertyAll(
                 AppColors.primaryColor
             ),
