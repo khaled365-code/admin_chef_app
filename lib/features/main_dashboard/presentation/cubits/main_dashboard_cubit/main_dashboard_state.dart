@@ -5,6 +5,61 @@ sealed class MainDashboardState {}
 
 final class MainDashboardInitial extends MainDashboardState {}
 
+final class GetLogoutDesignState extends MainDashboardState {}
+
+final class AdminLogoutLoadingState extends MainDashboardState {}
+
+
+final class AdminLogoutSuccessState extends MainDashboardState {
+
+  final String message;
+  AdminLogoutSuccessState({required this.message});
+}
+final class AdminLogoutFailureState extends MainDashboardState {
+
+  final ErrorModel errorModel;
+  AdminLogoutFailureState({required this.errorModel});
+}
+
+final class GetDeleteChefDesignState extends MainDashboardState {}
+
+final class DeleteChefLoadingState extends MainDashboardState {}
+
+final class DeleteChefFailureState extends MainDashboardState {
+
+  final ErrorModel errorModel;
+  DeleteChefFailureState({required this.errorModel});
+}
+
+final class DeleteChefSuccessState extends MainDashboardState {
+  final String message;
+  DeleteChefSuccessState({required this.message});
+}
+
+
+
+
+
+
+final class DeleteMealLoadingState extends MainDashboardState {}
+
+final class DeleteMealSuccessState extends MainDashboardState {
+
+  final String message;
+  DeleteMealSuccessState({required this.message});
+}
+
+final class DeleteMealFailureState extends MainDashboardState {
+
+  final ErrorModel errorModel;
+  DeleteMealFailureState({required this.errorModel});
+}
+
+
+
+
+final class GetDeleteMealDesignState extends MainDashboardState {}
+
 final class PerformMealRequestDesignState extends MainDashboardState {}
 
 

@@ -12,6 +12,10 @@ abstract class DashBoardRepo
   Future<Either<ErrorModel,AllChefsDataModel>>getAllSystemChefs();
   Future<Either<ErrorModel,String>>dealWithChefRequest({required String chefId,required String status});
   Future<Either<ErrorModel,String>>dealWithMealRequest({required String mealId,required String status});
+  Future<Either<ErrorModel,String>>deleteMeal({required String mealId});
+  Future<Either<ErrorModel,String>>deleteChef({required String chefId});
+  Future<Either<ErrorModel,String>>adminLogout();
+
 
 
 }

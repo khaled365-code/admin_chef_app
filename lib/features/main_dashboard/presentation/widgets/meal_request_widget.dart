@@ -85,7 +85,7 @@ class MealRequestWidget extends StatelessWidget {
           ),
           SpaceWidget(height: 32,),
           state is DealWithMealRequestLoadingState?
-          Center(child: CircularProgressLoadingIndicator(),):
+          Center(child: CustomCircularProgressLoadingIndicator(),):
           SharedButton(
             btnSize: WidgetStatePropertyAll(
               Size(188, 64),

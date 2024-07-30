@@ -30,13 +30,12 @@ class AuthRepoImplementation implements AuthRepo
           data: {ApiKeys.email: email, ApiKeys.password: password});
 
       var userToken=response[ApiKeys.token];
-      CacheHelper().saveData(key: ApiKeys.token, value: userToken);
-      CacheHelper().saveData(key: ApiKeys.id, value: JwtDecoder.decode(userToken)[ApiKeys.id]);
-      CacheHelper().saveData(key: ApiKeys.email, value: JwtDecoder.decode(userToken)[ApiKeys.email]);
-      CacheHelper().saveData(key: ApiKeys.name, value: JwtDecoder.decode(userToken)[ApiKeys.name]);
+       CacheHelper().saveData(key: ApiKeys.token, value: userToken);
+       CacheHelper().saveData(key: ApiKeys.id, value: JwtDecoder.decode(userToken)[ApiKeys.id]);
+       CacheHelper().saveData(key: ApiKeys.email, value: JwtDecoder.decode(userToken)[ApiKeys.email]);
+       CacheHelper().saveData(key: ApiKeys.name, value: JwtDecoder.decode(userToken)[ApiKeys.name]);
 
       return Right(response[ApiKeys.message]);
-      return Right(response);
 
     }on ServerException catch(e)
     {

@@ -86,7 +86,7 @@ class ChefRequestWidget extends StatelessWidget {
           ),
           SpaceWidget(height: 32,),
           state is DealWithChefRequestLoadingState?
-          Center(child: CircularProgressLoadingIndicator(),):
+          Center(child: CustomCircularProgressLoadingIndicator(),):
           SharedButton(
             btnSize: WidgetStatePropertyAll(
               Size(188, 64),

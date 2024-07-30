@@ -8,6 +8,8 @@ class EndPoints
 
   static const String adminLoginEndPoint="$baseUrl/admin/signin";
 
+  static const String adminLogoutEndPoint="$baseUrl/admin/logout";
+
   static const String getAllMealsEndPoint='$baseUrl/admin/get-meals?status=all';
 
   static const String getAllSystemChefsEndPoint='$baseUrl/admin/get-chefs?status=all';
@@ -22,6 +24,16 @@ class EndPoints
   {
 
     return '$baseUrl/admin/deal-with-meal-request/$mealId?status=$status';
+  }
+
+  static String deleteMealEndPoint({required String mealId})
+  {
+    return '$baseUrl/meal/delete-meal/$mealId';
+  }
+
+  static String deleteChefEndPoint({required String chefId})
+  {
+    return '$baseUrl/chef/delete?id=$chefId';
   }
 
 

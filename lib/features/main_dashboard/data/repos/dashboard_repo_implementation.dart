@@ -71,6 +71,47 @@ class DashBoardRepoImplementation implements DashBoardRepo
     }
   }
 
+  @override
+  Future<Either<ErrorModel, String>> deleteMeal({required String mealId}) async
+  {
+
+    try
+    {
+      final response=await api.delete(EndPoints.deleteMealEndPoint(mealId: mealId));
+      return Right(response[ApiKeys.message]);
+
+    }on ServerException catch(e)
+    {
+      return Left(e.errorModel);
+    }
+
+  }
+
+  @override
+  Future<Either<ErrorModel, String>> deleteChef({required String chefId})  async {
+    try
+    {
+      final response=await api.delete(EndPoints.deleteChefEndPoint(chefId: chefId));
+      return Right(response[ApiKeys.message]);
+
+    }on ServerException catch(e)
+    {
+      return Left(e.errorModel);
+    }
+  }
+
+  @override
+  Future<Either<ErrorModel,String>> adminLogout() async {
+   try
+   {
+     final response=await api.get(EndPoints.adminLogoutEndPoint);
+     return Right(response[ApiKeys.message]);
+   }on ServerException catch(e)
+   {
+     return Left(e.errorModel);
+   }
+  }
+
 
 
 

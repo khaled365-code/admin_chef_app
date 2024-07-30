@@ -1,17 +1,18 @@
 
 
-import 'package:admin_chef_app/core/utillis/app_assets.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/widgets/shimmer_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../../../core/utillis/app_colors.dart';
 import '../../../../core/utillis/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 import '../widgets/chef_data_container.dart';
 import '../widgets/chef_request_widget.dart';
+import '../widgets/delete_chef_widget.dart';
+import '../widgets/delete_meal_widget.dart';
+import '../widgets/logout_design_widget.dart';
 import '../widgets/meal_container_item.dart';
 import '../widgets/banner_container_widget.dart';
 import '../widgets/custom_dashboard_drawer.dart';
@@ -226,6 +227,27 @@ class MainDashboardScreen extends StatelessWidget {
                                   state is DealWithMealRequestFailureState || state is DealWithMealRequestSuccessState)
                               {
                                 return MealRequestWidget();
+                              }
+                              if(state is GetDeleteMealDesignState ||
+                                  state is DeleteMealLoadingState ||
+                                  state is DeleteMealFailureState ||
+                                  state is DeleteMealSuccessState)
+                                {
+                                  return DeleteMealWidget();
+                                }
+                              if(state is GetDeleteChefDesignState ||
+                                  state is DeleteChefLoadingState ||
+                                  state is DeleteChefFailureState ||
+                                  state is DeleteChefSuccessState)
+                              {
+                                return DeleteChefWidget();
+                              }
+                              if(state is GetLogoutDesignState ||
+                                  state is AdminLogoutFailureState ||
+                                  state is AdminLogoutSuccessState ||
+                                  state is AdminLogoutLoadingState)
+                              {
+                                return LogoutDesignWidget();
                               }
                               else
                                 {

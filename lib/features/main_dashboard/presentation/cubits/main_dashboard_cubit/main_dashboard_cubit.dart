@@ -202,5 +202,62 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
     });
   }
 
+  TextEditingController mealIdDeleteMealController=TextEditingController();
+
+  GlobalKey<FormState>deleteMealFormKey=GlobalKey();
+
+  getDeleteMealDesign()
+  {
+    emit(GetDeleteMealDesignState());
+  }
+
+  deleteMealFun({required String mealId}) async
+  {
+    emit(DeleteMealLoadingState());
+    final result=await dashBoardRepoImplementation.deleteMeal(mealId: mealId);
+    result.fold((errorModel) {
+      emit(DeleteMealFailureState(errorModel: errorModel));
+    }, (message)
+    {
+      emit(DeleteMealSuccessState(message: message));
+    });
+  }
+
+
+  TextEditingController deleteChefIdController=TextEditingController();
+  GlobalKey<FormState>deleteChefFormKey=GlobalKey();
+  getDeleteChefDesign()
+  {
+    emit(GetDeleteChefDesignState());
+  }
+
+  deleteChefFun({required String chefId}) async
+  {
+    emit(DeleteChefLoadingState());
+    final result=await dashBoardRepoImplementation.deleteChef(chefId: chefId);
+    result.fold((errorModel) {
+      emit(DeleteChefFailureState(errorModel: errorModel));
+    }, (message)
+    {
+      emit(DeleteChefSuccessState(message: message));
+    });
+  }
+
+  getLogoutDesign()
+  {
+    emit(GetLogoutDesignState());
+  }
+  logoutAdminFun() async
+  {
+    emit(AdminLogoutLoadingState());
+    final result=await dashBoardRepoImplementation.adminLogout();
+    result.fold((errorModel) {
+      emit(AdminLogoutFailureState(errorModel: errorModel));
+    }, (message)
+    {
+      emit(AdminLogoutSuccessState(message: message));
+    });
+  }
+
 
 }

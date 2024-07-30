@@ -122,7 +122,7 @@ class AdminLoginScreen extends StatelessWidget {
                                             height: 36,
                                           ),
                                           state is LoginLoadingState?
-                                          Center(child: CircularProgressLoadingIndicator(
+                                          Center(child: CustomCircularProgressLoadingIndicator(
                                             progressIndicatorColor: AppColors.c060606,
                                           )):
                                           LoginButton(loginCubit: loginCubit),
