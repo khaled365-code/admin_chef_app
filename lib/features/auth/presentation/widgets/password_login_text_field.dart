@@ -51,27 +51,30 @@ class PasswordLoginTextField extends StatelessWidget {
       obscureText: loginCubit.isObsecureText,
       decoration: InputDecoration(
           floatingLabelStyle:
-          AppTextStyles.regular20(context)
-              .copyWith(
-              color: AppColors.black),
+          AppTextStyles.regular16(context).copyWith(
+              color: AppColors.c959895,
+              fontFamily: 'Poppins'
+          ),
           labelText: 'Password',
-          labelStyle: AppTextStyles.regular20(
-              context),
+          labelStyle: AppTextStyles.regular16(context).copyWith(
+              color: AppColors.c959895,
+              fontFamily: 'Poppins'
+          ),
           suffixIcon: GestureDetector(
               onTap: () {
                 loginCubit.changeEyeShape();
               },
               child: Icon(
-                loginCubit.suffixIcon,color: AppColors.c1A1717,)),
+                loginCubit.suffixIcon,color: AppColors.c959895,)),
           enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.cA69999)),
+                  color: AppColors.primaryColor)),
           border: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.cA69999)),
+                  color: AppColors.primaryColor)),
           focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.cA69999))),
+                  color: AppColors.primaryColor))),
     );
   }
 }

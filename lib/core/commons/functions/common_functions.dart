@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../features/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import '../../utillis/app_colors.dart';
 import '../../utillis/app_styles.dart';
 
@@ -100,6 +101,16 @@ getAmorPm(DateTime dateTime)
     return 'PM';
   } else {
     return 'AM';
+  }
+}
+void handleErrorinListenerFun(LoginFailureState state, BuildContext context) {
+  if(state.errorModel.error!=null)
+  {
+    buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1,state.errorModel.error!.toString().length-1));
+  }
+  else
+  {
+    buildScaffoldMessenger(context: context, msg: state.errorModel.errorMessage!);
   }
 }
 

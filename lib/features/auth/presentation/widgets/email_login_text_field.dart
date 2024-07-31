@@ -55,20 +55,23 @@ class EmailLoginTextField extends StatelessWidget {
       decoration: InputDecoration(
           labelText: 'Email',
           floatingLabelStyle:
-          AppTextStyles.regular20(context)
-              .copyWith(
-              color: AppColors.black),
-          labelStyle: AppTextStyles.regular20(
-              context),
+          AppTextStyles.regular16(context).copyWith(
+              color: AppColors.c959895,
+              fontFamily: 'Poppins'
+          ),
+          labelStyle: AppTextStyles.regular16(context).copyWith(
+            color: AppColors.c959895,
+            fontFamily: 'Poppins'
+          ),
           enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.cA69999)),
+                  color: AppColors.primaryColor)),
           border: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.cA69999)),
+                  color: AppColors.primaryColor)),
           focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.cA69999))),
+                  color: AppColors.primaryColor))),
     );
   }
 }

@@ -2,12 +2,15 @@ import 'package:admin_chef_app/core/database/errors/error_model.dart';
 import 'package:admin_chef_app/features/auth/data/repos/auth_repo_implementation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit({required this.authRepoImplementation}) : super(LoginInitial());
+
+  static LoginCubit get(context)=>BlocProvider.of(context);
 
 
   final AuthRepoImplementation authRepoImplementation;

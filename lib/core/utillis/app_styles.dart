@@ -112,6 +112,14 @@ class AppTextStyles
       fontFamily: 'Space Grotesk',
     );
   }
+  static  TextStyle bold40(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context,40),
+      fontWeight: FontWeightHelper.bold,
+      fontFamily: 'Playfair Display',
+    );
+  }
 
   static  TextStyle semiBold20(BuildContext context)
   {

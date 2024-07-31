@@ -22,7 +22,9 @@ class DontHaveAccountRow extends StatelessWidget {
           style:
           AppTextStyles.regular16(context)
               .copyWith(
-              color: AppColors.black),
+              color: AppColors.c07143B,
+              fontFamily: 'Poppins'
+          ),
         ),
         SpaceWidget(
           width: 8,
@@ -33,11 +35,13 @@ class DontHaveAccountRow extends StatelessWidget {
             buildScaffoldMessenger(context: context, msg: 'New admin registration is locked right now');
           },
           child: Text(
-            'Sign up for free',
+            'Click here to sign up',
             style:
-            AppTextStyles.medium16(context)
+            AppTextStyles.regular16(context)
                 .copyWith(
-                color: AppColors.black),
+                color: AppColors.primaryColor,
+                fontFamily: 'Poppins'
+            ),
           ),
         ),
       ],

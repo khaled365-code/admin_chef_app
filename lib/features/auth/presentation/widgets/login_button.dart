@@ -3,6 +3,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/commons/functions/common_functions.dart';
 import '../../../../core/utillis/app_colors.dart';
@@ -21,11 +22,11 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.c060606,
+          backgroundColor: AppColors.primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
           ),
-          fixedSize: Size(1000, 60)
+          fixedSize: Size(1000, 140.h)
       ),
       onPressed: () {
         if(loginCubit.loginFormKey.currentState!.validate() )
@@ -44,9 +45,12 @@ class LoginButton extends StatelessWidget {
         }
       },
       child: Text(
-        'Log in',
-        style: AppTextStyles.bold16(context)
-            .copyWith(color: AppColors.white),
+        'Sign in',
+        style: AppTextStyles.regular16(context)
+            .copyWith(color: AppColors.white,
+            fontFamily: 'Poppins'
+
+        ),
       ),
     );
   }

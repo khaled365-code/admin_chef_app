@@ -31,7 +31,7 @@ class TermsAndConditionsRow extends StatelessWidget {
               borderRadius:
               BorderRadius.circular(2),
               border: Border.all(
-                  color: AppColors.cD5D5D5)),
+                  color: AppColors.c959895)),
           child: loginCubit.termsCheckBoxValue==true?
           Icon(Icons.check,color: AppColors.c060606,size: 17,):SizedBox.shrink(),
         ),
@@ -42,9 +42,10 @@ class TermsAndConditionsRow extends StatelessWidget {
         Text(
           'Terms & Conditions ',
           style:
-          AppTextStyles.regular15(context)
-              .copyWith(
-              color: AppColors.black),
+          AppTextStyles.regular16(context).copyWith(
+              color: AppColors.c959895,
+              fontFamily: 'Poppins'
+          ),
         ),
         Spacer(),
         GestureDetector(
@@ -55,9 +56,11 @@ class TermsAndConditionsRow extends StatelessWidget {
           child: Text(
             'Forgot Password',
             style:
-            AppTextStyles.regular15(context)
-                .copyWith(
-                color: AppColors.black),
+            AppTextStyles.regular16(context).copyWith(
+                color: AppColors.primaryColor,
+                fontFamily: 'Poppins'
+
+            ),
           ),
         ),
       ],

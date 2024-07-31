@@ -25,6 +25,7 @@ class ImageConstants
   static const String saladsImage='assets/images/salads_image.png';
   static const String spaghettiImage='assets/images/Spaghetti.png';
   static const String sweetsImage='assets/images/Sweets.png';
+  static const String homeIntroImage='assets/images/home_image.png';
   static const String vegetablePizzaImage='assets/images/vegetable _Pizza_image.png';
 
 

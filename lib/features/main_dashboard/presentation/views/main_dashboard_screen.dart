@@ -1,5 +1,8 @@
 
 
+import 'package:admin_chef_app/core/database/api/api_keys.dart';
+import 'package:admin_chef_app/core/database/cache/cache_helper.dart';
+import 'package:admin_chef_app/core/utillis/app_assets.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -262,12 +265,21 @@ class MainDashboardScreen extends StatelessWidget {
                                     children:
                                     [
                                       SpaceWidget(height: 72),
-                                      Text('Home',
-                                        style: AppTextStyles.bold23(context).copyWith(
-                                            color: AppColors.c07143B
-                                        ),),
-
-                                    ],
+                                      RichText(
+                                        text: TextSpan(children: [
+                                      TextSpan(
+                                          text: 'Welcome ',
+                                          style: AppTextStyles.bold23(context)
+                                              .copyWith(
+                                                  color: AppColors.c07143B)),
+                                      TextSpan(
+                                          text: '🙂',
+                                          style: AppTextStyles.bold23(context)
+                                              .copyWith(
+                                                  color:
+                                                      AppColors.primaryColor))
+                                    ]))
+                                  ],
                                   );
                                 }
                             },)
