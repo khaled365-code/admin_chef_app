@@ -19,7 +19,7 @@ class CustomDashboardDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MainDashboardCubit, MainDashboardState>(
       builder: (context, state) {
-        var mainDashboardCubit = BlocProvider.of<MainDashboardCubit>(context);
+
         return Container(
             color: AppColors.white,
             child: Column(
@@ -28,22 +28,21 @@ class CustomDashboardDrawer extends StatelessWidget {
                   height: 4,
                 ),
                 SpaceWidget(height: 24,),
-                ...List.generate(mainDashboardCubit.firstDrawerDataList.length, (index) => Padding(
+                ...List.generate(MainDashboardCubit.get(context).firstDrawerDataList.length, (index) => Padding(
                   padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w),
                   child: DrawerListTile(
                     onListTileTap: ()
                       {
-                        mainDashboardCubit.updateFirstDrawerListShape(currentIndex: index);
+                        MainDashboardCubit.get(context).updateFirstDrawerListShape(currentIndex: index);
                         switch(index)
                         {
                           case 0:
                             MainDashboardCubit.get(context).allSystemMealsModel=null;
                             MainDashboardCubit.get(context).allChefsData=null;
-                            log(CacheHelper().getData(key: ApiKeys.token));
                             break;
                           case 1:
                             MainDashboardCubit.get(context).allChefsData=null;
-                            mainDashboardCubit.getAllMealsFun();
+                            MainDashboardCubit.get(context).getAllMealsFun();
                             break;
                           case 2:
                             MainDashboardCubit.get(context).allSystemMealsModel=null;
@@ -62,18 +61,18 @@ class CustomDashboardDrawer extends StatelessWidget {
 
                         }
                       },
-                      drawerDataModel: mainDashboardCubit.firstDrawerDataList[index]),
+                      drawerDataModel: MainDashboardCubit.get(context).firstDrawerDataList[index]),
                 ),),
                 Spacer(),
                 ...List.generate(
-                    mainDashboardCubit.secondDrawerDataList.length,
+                  MainDashboardCubit.get(context).secondDrawerDataList.length,
                     (index) => Padding(
                       padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w),
                       child: DrawerListTile(
-                        drawerDataModel: mainDashboardCubit.secondDrawerDataList[index],
+                        drawerDataModel: MainDashboardCubit.get(context).secondDrawerDataList[index],
                         onListTileTap: ()
                         {
-                          mainDashboardCubit.updateSecondDrawerListShape(currentIndex: index);
+                          MainDashboardCubit.get(context).updateSecondDrawerListShape(currentIndex: index);
                           switch(index)
                           {
                             case 0:

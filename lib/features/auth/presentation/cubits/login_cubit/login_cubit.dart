@@ -42,7 +42,7 @@ class LoginCubit extends Cubit<LoginState> {
   changeTermsCheckBoxValue()
   {
     termsCheckBoxValue=!termsCheckBoxValue;
-    emit(CheckBoxchangedState());
+    emit(CheckBoxChangedState());
 
   }
 
