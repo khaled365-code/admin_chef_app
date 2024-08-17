@@ -21,80 +21,90 @@ class CustomDashboardDrawer extends StatelessWidget {
       builder: (context, state) {
         return Container(
             color: AppColors.white,
-            child: Column(
-              children: [
-                LineWidget(
-                  height: 4,
-                ),
-                SpaceWidget(height: 24,),
-                ...List.generate(MainDashboardCubit.get(context).firstDrawerDataList.length, (index) => Padding(
-                  padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w,end: 20.w),
-                  child: DrawerListTile(
-                    onListTileTap: ()
-                      {
-                        MainDashboardCubit.get(context).updateFirstDrawerListShape(currentIndex: index);
-                        switch(index)
-                        {
-                          case 0:
-                            MainDashboardCubit.get(context).allSystemMealsModel=null;
-                            MainDashboardCubit.get(context).allChefsData=null;
-                            break;
-                          case 1:
-                            MainDashboardCubit.get(context).allChefsData=null;
-                            MainDashboardCubit.get(context).getAllMealsFun();
-                            break;
-                          case 2:
-                            MainDashboardCubit.get(context).allSystemMealsModel=null;
-                            MainDashboardCubit.get(context).getAllSystemChefsFun();
-                            break;
-                          case 3:
-                            MainDashboardCubit.get(context).allSystemMealsModel=null;
-                            MainDashboardCubit.get(context).allChefsData=null;
-                            MainDashboardCubit.get(context).getChefRequestDesign();
-                            break;
-                          case 4:
-                            MainDashboardCubit.get(context).allSystemMealsModel=null;
-                            MainDashboardCubit.get(context).allChefsData=null;
-                            MainDashboardCubit.get(context).getMealRequestDesign();
-                            break;
+            child: CustomScrollView(
+              slivers: [
+                SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Column(
+                      children: [
+                        LineWidget(
+                          height: 4,
+                        ),
+                        SpaceWidget(height: 24,),
+                        ...MainDashboardCubit.get(context).firstDrawerDataList.asMap().entries.map((e) {
+                          int index=e.key;
+                          return  Padding(
+                            padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w,end: 20.w),
+                            child: DrawerListTile(
+                                onListTileTap: ()
+                                {
+                                  MainDashboardCubit.get(context).updateFirstDrawerListShape(currentIndex: index);
+                                  switch(index)
+                                  {
+                                    case 0:
+                                      MainDashboardCubit.get(context).allSystemMealsModel=null;
+                                      MainDashboardCubit.get(context).allChefsData=null;
+                                      break;
+                                    case 1:
+                                      MainDashboardCubit.get(context).allChefsData=null;
+                                      MainDashboardCubit.get(context).getAllMealsFun();
+                                      break;
+                                    case 2:
+                                      MainDashboardCubit.get(context).allSystemMealsModel=null;
+                                      MainDashboardCubit.get(context).getAllSystemChefsFun();
+                                      break;
+                                    case 3:
+                                      MainDashboardCubit.get(context).allSystemMealsModel=null;
+                                      MainDashboardCubit.get(context).allChefsData=null;
+                                      MainDashboardCubit.get(context).getChefRequestDesign();
+                                      break;
+                                    case 4:
+                                      MainDashboardCubit.get(context).allSystemMealsModel=null;
+                                      MainDashboardCubit.get(context).allChefsData=null;
+                                      MainDashboardCubit.get(context).getMealRequestDesign();
+                                      break;
 
-                        }
-                      },
-                      drawerDataModel: MainDashboardCubit.get(context).firstDrawerDataList[index]),
-                ),),
-                Spacer(),
-                ...List.generate(
-                  MainDashboardCubit.get(context).secondDrawerDataList.length,
-                    (index) => Padding(
-                      padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w,end: 20.w),
-                      child: DrawerListTile(
-                        drawerDataModel: MainDashboardCubit.get(context).secondDrawerDataList[index],
-                        onListTileTap: ()
-                        {
-                          MainDashboardCubit.get(context).updateSecondDrawerListShape(currentIndex: index);
-                          switch(index)
-                          {
-                            case 0:
-                              MainDashboardCubit.get(context).allSystemMealsModel=null;
-                              MainDashboardCubit.get(context).allChefsData=null;
-                              MainDashboardCubit.get(context).getDeleteMealDesign();
-                              break;
-                            case 1:
-                              MainDashboardCubit.get(context).allSystemMealsModel=null;
-                              MainDashboardCubit.get(context).allChefsData=null;
-                              MainDashboardCubit.get(context).getDeleteChefDesign();
-                              break;
-                            case 2:
-                              MainDashboardCubit.get(context).allSystemMealsModel=null;
-                              MainDashboardCubit.get(context).allChefsData=null;
-                              MainDashboardCubit.get(context).getLogoutDesign();
-                              MainDashboardCubit.get(context).logoutAdminFun();
-                              break;
-                          }
-                        },
-                      ),
-                    ),),
-                SpaceWidget(height: 24,),
+                                  }
+                                },
+                                drawerDataModel: MainDashboardCubit.get(context).firstDrawerDataList[index]),
+                          );
+                        },).toList(),
+                        Spacer(),
+                        ...List.generate(
+                          MainDashboardCubit.get(context).secondDrawerDataList.length,
+                              (index) => Padding(
+                            padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w,end: 20.w),
+                            child: DrawerListTile(
+                              drawerDataModel: MainDashboardCubit.get(context).secondDrawerDataList[index],
+                              onListTileTap: ()
+                              {
+                                MainDashboardCubit.get(context).updateSecondDrawerListShape(currentIndex: index);
+                                switch(index)
+                                {
+                                  case 0:
+                                    MainDashboardCubit.get(context).allSystemMealsModel=null;
+                                    MainDashboardCubit.get(context).allChefsData=null;
+                                    MainDashboardCubit.get(context).getDeleteMealDesign();
+                                    break;
+                                  case 1:
+                                    MainDashboardCubit.get(context).allSystemMealsModel=null;
+                                    MainDashboardCubit.get(context).allChefsData=null;
+                                    MainDashboardCubit.get(context).getDeleteChefDesign();
+                                    break;
+                                  case 2:
+                                    MainDashboardCubit.get(context).allSystemMealsModel=null;
+                                    MainDashboardCubit.get(context).allChefsData=null;
+                                    MainDashboardCubit.get(context).getLogoutDesign();
+                                    MainDashboardCubit.get(context).logoutAdminFun();
+                                    break;
+                                }
+                              },
+                            ),
+                          ),),
+                        SpaceWidget(height: 24,),
+                      ],
+                    )
+                )
 
 
               ],
