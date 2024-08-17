@@ -29,6 +29,7 @@ class PasswordLoginTextField extends StatelessWidget {
           return null;
         }
       },
+      cursorColor: AppColors.primaryColor,
       onFieldSubmitted: (value)
       {
         if(loginCubit.loginFormKey.currentState!.validate() )

@@ -26,7 +26,7 @@ class LoginButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
           ),
-          fixedSize: Size(1000, 140.h)
+          fixedSize: Size(1000.w, 140.h)
       ),
       onPressed: () {
         if(loginCubit.loginFormKey.currentState!.validate() )

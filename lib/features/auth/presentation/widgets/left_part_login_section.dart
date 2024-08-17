@@ -18,18 +18,12 @@ class ImageAdminLoginSection extends StatelessWidget {
     return Container(
       color: AppColors.cFFF6EE,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AspectRatio(
-            aspectRatio: 763 / 865,
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.cFFF6EE,
-              ),
-              child: Image.asset(
-                ImageConstants.dishes4Image,
-              ),
-            ),
+          SpaceWidget(height: 52,),
+          Image.asset(
+            ImageConstants.dishes4Image,
           ),
           SpaceWidget(height: 52)
         ],

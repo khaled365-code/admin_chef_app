@@ -29,7 +29,6 @@ class MainDashboardScreen extends StatelessWidget {
     print(MediaQuery.sizeOf(context).width);
     return Scaffold(
       backgroundColor: AppColors.cFCF6EE,
-      extendBodyBehindAppBar: true,
       body: SafeArea(
           child: CustomScrollView(
         slivers: [
@@ -126,8 +125,15 @@ class MainDashboardScreen extends StatelessWidget {
                                                     mainAxisExtent: 300,
                                                   ),
                                                   itemBuilder: (context, index) =>
-                                                  ChefDataContainer(
-                                                    chefsData: MainDashboardCubit.get(context).allChefsData!.chefs![index],
+                                                  GestureDetector(
+                                                    onTap: ()
+                                                    {
+                                                      MainDashboardCubit.get(context).updateChefIndex(index: index);
+                                                    },
+                                                    child: ChefDataContainer(
+                                                      containerIsSelected: MainDashboardCubit.get(context).currentChefIndex==index,
+                                                      chefsData: MainDashboardCubit.get(context).allChefsData!.chefs![index],
+                                                    ),
                                                   )),
                                                 SpaceWidget(height: 72,),
 
@@ -152,7 +158,7 @@ class MainDashboardScreen extends StatelessWidget {
                                                   style: AppTextStyles.bold23(context).copyWith(
                                                       color: AppColors.c07143B
                                                   ),),
-                                                SpaceWidget(height: 200,),
+                                                SpaceWidget(height: 230,),
                                                 GridView.builder(
                                                   shrinkWrap: true,
                                                   physics: NeverScrollableScrollPhysics(),
@@ -188,7 +194,7 @@ class MainDashboardScreen extends StatelessWidget {
                                                   style: AppTextStyles.bold23(context).copyWith(
                                                       color: AppColors.c07143B
                                                   ),),
-                                                SpaceWidget(height: 200,),
+                                                SpaceWidget(height: 230,),
                                                 GridView.builder(
                                                   padding: EdgeInsetsDirectional.zero,
                                                   shrinkWrap: true,

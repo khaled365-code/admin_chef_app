@@ -32,9 +32,8 @@ class BannerContainerWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacer(),
-            Text('Hello, ${CacheHelper().getData(key: ApiKeys.name)}',style: AppTextStyles.bold23(context).copyWith(
-            color: AppColors.c07143B
-          )),
+              Text('Hello, ${CacheHelper().getData(key: ApiKeys.name)}',
+                        style: AppTextStyles.bold23(context).copyWith(color: AppColors.c07143B)),
               SpaceWidget(height: 24,),
               RichText(text: TextSpan(
                 children: [
@@ -67,10 +66,11 @@ class BannerContainerWidget extends StatelessWidget {
                     ),),
                   )),
                 style: ElevatedButton.styleFrom(
+                  padding: EdgeInsetsDirectional.symmetric(horizontal: 24.w),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(100.r),
                   ),
-                  fixedSize: Size(150, 48),
+                  fixedSize: Size(150.w, 48.h),
                   backgroundColor: AppColors.primaryColor,
                 ),
               ),

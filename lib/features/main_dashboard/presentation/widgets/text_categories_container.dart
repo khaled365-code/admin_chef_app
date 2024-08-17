@@ -15,10 +15,7 @@ class TextCategoriesContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MainDashboardCubit, MainDashboardState>(
-      builder: (context, state) {
-        var mainDashboardCubit = BlocProvider.of<MainDashboardCubit>(context);
-        return Container(
+     return Container(
           decoration: BoxDecoration(
             color: AppColors.white.withOpacity(.6),
             borderRadius: BorderRadius.circular(24.r),
@@ -28,7 +25,7 @@ class TextCategoriesContainer extends StatelessWidget {
             children: [
               SpaceWidget(height: 24,),
               Padding(
-                padding:  EdgeInsetsDirectional.only(start: 24.w),
+                padding: EdgeInsetsDirectional.only(start: 24.w),
                 child: Text('Categories',
                   style: AppTextStyles.bold16(context).copyWith(
                       color: AppColors.c07143B,
@@ -42,36 +39,33 @@ class TextCategoriesContainer extends StatelessWidget {
                 ),
               ),
               SpaceWidget(height: 43,),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: mainDashboardCubit.categoriesList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 24,
-                    crossAxisSpacing: 32,
-                    crossAxisCount: 3,
-                    mainAxisExtent: 48),
-                padding:  EdgeInsetsDirectional.only(start: 24.w, end: 24.w),
-                itemBuilder: (context, index) =>
-                    GestureDetector(
-                      onTap: () {
-                        mainDashboardCubit
-                          ..updateSelectedCategoryIndex(currentIndex: index);
-                      },
-                      child: CategoryContainerItem(
-                        itemIsSelected: mainDashboardCubit
-                            .selectedCategoryIndex == index,
-                        categoriesDataModel: mainDashboardCubit
-                            .categoriesList[index],
-                      ),
-                    ),),
+              BlocBuilder<MainDashboardCubit,MainDashboardState>(
+                  builder: (context,state)
+                  {
+                    return  GridView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: MainDashboardCubit.get(context).categoriesList.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio:128/48 ,
+                        mainAxisSpacing: 24,
+                        crossAxisSpacing: 32,
+                        crossAxisCount: 3,),
+                      padding:  EdgeInsetsDirectional.only(start: 24.w, end: 24.w),
+                      itemBuilder: (context, index) =>
+                          GestureDetector(
+                            onTap: () {
+                              MainDashboardCubit.get(context).updateSelectedCategoryIndex(currentIndex: index);
+                            },
+                            child: CategoryContainerItem(
+                              itemIsSelected: MainDashboardCubit.get(context).selectedCategoryIndex == index,
+                              categoriesDataModel: MainDashboardCubit.get(context).categoriesList[index],
+                            ),
+                          ),);
+                  }),
               SpaceWidget(height: 43,),
-
-
             ],
           ),
         );
-      },
-    );
   }
 }

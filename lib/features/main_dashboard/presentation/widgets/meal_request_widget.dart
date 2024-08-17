@@ -18,27 +18,6 @@ class MealRequestWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MainDashboardCubit, MainDashboardState>(
-  listener: (context, state) {
-    if(state is DealWithMealRequestSuccessState)
-    {
-      buildScaffoldMessenger(context: context, msg: state.successMessage);
-      MainDashboardCubit.get(context).mealIdControllerForMealRequest.clear();
-      MainDashboardCubit.get(context).mealStatusControllerForMealRequest.clear();
-    }
-    if(state is DealWithMealRequestFailureState)
-    {
-      if(state.errorModel.error!=null)
-      {
-        buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1,state.errorModel.error!.toString().length-1));
-      }
-      else
-      {
-        buildScaffoldMessenger(context: context, msg: state.errorModel.errorMessage!);
-      }
-    }
-  },
-  builder: (context, state) {
     return Form(
       key: MainDashboardCubit.get(context).dealWithMealRequestFormKey,
       child: Column(
@@ -85,35 +64,61 @@ class MealRequestWidget extends StatelessWidget {
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
           SpaceWidget(height: 68,),
-          state is DealWithMealRequestLoadingState?
-          Center(child: CustomCircularProgressLoadingIndicator(),):
-          SharedButton(
-            btnSize: WidgetStatePropertyAll(
-              Size(188, 44),
-            ),
-            borderRadiusValue: 24,
-            btnText: 'Modify',
-            btnColor: WidgetStatePropertyAll(
-                AppColors.primaryColor
-            ),
-            btnTextStyle: AppTextStyles.regular16(context).copyWith(
-                color: AppColors.white,
-                fontFamily: 'Poppins'
-            ),
-            onPressessed: (){
-              if(MainDashboardCubit.get(context).dealWithMealRequestFormKey.currentState!.validate())
+          BlocConsumer<MainDashboardCubit, MainDashboardState>(
+              builder: (context,state)
               {
-                MainDashboardCubit.get(context).dealWithMealRequestFun(
-                    mealId: MainDashboardCubit.get(context).mealIdControllerForMealRequest.text,
-                    status: MainDashboardCubit.get(context).mealStatusControllerForMealRequest.text);
-              }
-            },
-          )
-
+                if (state is DealWithMealRequestLoadingState)
+                  {
+                    return  Center(child: CustomCircularProgressLoadingIndicator(),);
+                  }
+                return SharedButton(
+                  btnSize: WidgetStatePropertyAll(
+                    Size(188, 44),
+                  ),
+                  borderRadiusValue: 24,
+                  btnText: 'Modify',
+                  btnColor: WidgetStatePropertyAll(
+                      AppColors.primaryColor
+                  ),
+                  btnTextStyle: AppTextStyles.regular16(context).copyWith(
+                      color: AppColors.white,
+                      fontFamily: 'Poppins'
+                  ),
+                  onPressessed: (){
+                    if(MainDashboardCubit.get(context).dealWithMealRequestFormKey.currentState!.validate())
+                    {
+                      MainDashboardCubit.get(context).dealWithMealRequestFun(
+                          mealId: MainDashboardCubit.get(context).mealIdControllerForMealRequest.text,
+                          status: MainDashboardCubit.get(context).mealStatusControllerForMealRequest.text);
+                    }
+                  },
+                );
+              },
+              listener: (context,state)
+              {
+                  if (state is DealWithMealRequestSuccessState)
+                  {
+                    buildScaffoldMessenger(context: context, msg: state.successMessage);
+                    MainDashboardCubit.get(context).mealIdControllerForMealRequest.clear();
+                    MainDashboardCubit.get(context).mealStatusControllerForMealRequest.clear();
+                  }
+                  if (state is DealWithMealRequestFailureState)
+                  {
+                    if (state.errorModel.error != null)
+                    {
+                      buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1, state.errorModel.error!.toString().length - 1));
+                    }
+                    else
+                    {
+                      buildScaffoldMessenger(
+                          context: context,
+                          msg: state.errorModel.errorMessage!);
+                    }
+                  }
+                },
+              ),
         ],
       ),
     );
-  },
-);
   }
 }

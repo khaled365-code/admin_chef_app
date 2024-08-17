@@ -168,9 +168,6 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
   }
 
 
-
-
-
   AllSystemMealsModel? allSystemMealsModel;
 
   getAllMealsFun()async
@@ -187,11 +184,18 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
   }
 
   int currentMealIndex=0;
+  int currentChefIndex=0;
 
   updateSelectedMeal({required int index})
   {
     currentMealIndex=index;
     emit(UpdateMealIndexState());
+  }
+
+  updateChefIndex({required int index})
+  {
+    currentChefIndex=index;
+    emit(UpdateChefIndexState());
   }
 
 
@@ -317,6 +321,8 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
       emit(AdminLogoutSuccessState(message: message));
     });
   }
+
+
 
 
 }

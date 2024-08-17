@@ -126,7 +126,7 @@ class AppTextStyles
     return TextStyle(
       fontSize: getResponsiveFontSize(context,20),
       fontWeight: FontWeightHelper.semiBold,
-      fontFamily: 'Manrope',
+      fontFamily: 'Poppins',
     );
   }
   static  TextStyle semiBold16(BuildContext context)
@@ -172,7 +172,7 @@ class AppTextStyles
     double responsiveFontSize=scaleFactor*currentFontSize;
     double minFontSize=.8*currentFontSize;
     double maxFontSize=1.2*currentFontSize;
-    return responsiveFontSize.clamp(maxFontSize, maxFontSize);
+    return responsiveFontSize.clamp(minFontSize, maxFontSize);
 
 
 
@@ -183,15 +183,15 @@ class AppTextStyles
     double width=MediaQuery.sizeOf(context).width;
     if(width<SizeConfig.tabletSize)
       {
-        return width/600;
+        return width/400;
       }
     else if(width<SizeConfig.desktopSize)
       {
-        return width/800;
+        return width/700;
       }
     else
       {
-        return width/1500;
+        return width/1000;
       }
 
 

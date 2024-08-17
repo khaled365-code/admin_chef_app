@@ -19,7 +19,6 @@ class CustomDashboardDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MainDashboardCubit, MainDashboardState>(
       builder: (context, state) {
-
         return Container(
             color: AppColors.white,
             child: Column(
@@ -29,7 +28,7 @@ class CustomDashboardDrawer extends StatelessWidget {
                 ),
                 SpaceWidget(height: 24,),
                 ...List.generate(MainDashboardCubit.get(context).firstDrawerDataList.length, (index) => Padding(
-                  padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w),
+                  padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w,end: 20.w),
                   child: DrawerListTile(
                     onListTileTap: ()
                       {
@@ -67,7 +66,7 @@ class CustomDashboardDrawer extends StatelessWidget {
                 ...List.generate(
                   MainDashboardCubit.get(context).secondDrawerDataList.length,
                     (index) => Padding(
-                      padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w),
+                      padding:  EdgeInsetsDirectional.only(bottom: 10.h,start: 30.w,end: 20.w),
                       child: DrawerListTile(
                         drawerDataModel: MainDashboardCubit.get(context).secondDrawerDataList[index],
                         onListTileTap: ()

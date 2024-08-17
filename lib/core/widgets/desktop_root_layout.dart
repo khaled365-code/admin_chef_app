@@ -11,10 +11,10 @@ class DesktopRootLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(CacheHelper().getData(key: ApiKeys.token));
     return ScreenUtilInit(
       designSize: const Size(1920, 2114),
       builder: (context, child) {
+        print(MediaQuery.sizeOf(context).width);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           initialRoute: CacheHelper().getData(key: ApiKeys.token)!=null? AdminRoutes.mainDashboardScreen:AdminRoutes.adminLoginScreen,

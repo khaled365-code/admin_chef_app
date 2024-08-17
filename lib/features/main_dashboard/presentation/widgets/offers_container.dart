@@ -44,10 +44,10 @@ class OffersContainer extends StatelessWidget {
               ),
             )),
         PositionedDirectional(
-            bottom: 130.h,
+            top: -170.0.h,
             start: 91.w,
             end: 91.w,
-            child: Image.asset(ImageConstants.bigBurgerImage,width: 399.w,height: 800.h,fit: BoxFit.contain,))
+            child: Image.asset(ImageConstants.bigBurgerImage,width: 399.w,fit: BoxFit.contain,))
       ],
     );
   }

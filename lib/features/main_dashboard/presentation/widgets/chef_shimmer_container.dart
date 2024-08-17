@@ -25,7 +25,7 @@ class ChefShimmerContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 60,),
+          SpaceWidget(height: 40,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -48,7 +48,7 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-          SpaceWidget(height: 10,),
+          SpaceWidget(height: 8,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -58,7 +58,7 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-          SpaceWidget(height: 10,),
+          SpaceWidget(height: 8,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -68,7 +68,7 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-          SpaceWidget(height: 10,),
+          SpaceWidget(height: 24,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -78,7 +78,7 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-          SpaceWidget(height: 10,),
+          SpaceWidget(height: 8,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -88,11 +88,6 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-
-
-
-
-
         ],
       ),
     );

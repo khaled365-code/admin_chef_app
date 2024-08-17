@@ -99,8 +99,10 @@ final class DealWithMealRequestFailureState extends MainDashboardState {
 
 final class PerformChefRequestDesignState extends MainDashboardState {}
 
-final class GetAllChefsLoadingState extends MainDashboardState {}
 
+final class UpdateChefIndexState extends MainDashboardState {}
+
+final class GetAllChefsLoadingState extends MainDashboardState {}
 
 final class GetAllChefsSuccessState extends MainDashboardState {
 

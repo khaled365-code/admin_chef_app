@@ -18,28 +18,6 @@ class ChefRequestWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MainDashboardCubit, MainDashboardState>(
-  listener: (context, state) {
-    if(state is DealWithChefRequestSuccessState)
-      {
-        buildScaffoldMessenger(context: context, msg: state.successMessage);
-        MainDashboardCubit.get(context).statusControllerForChefRequest.clear();
-        MainDashboardCubit.get(context).chefIdForControllerForChefRequest.clear();
-      }
-    if(state is DealWithChefRequestFailureState)
-      {
-        if(state.errorModel.error!=null)
-        {
-          buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1,state.errorModel.error!.toString().length-1));
-
-        }
-        else
-        {
-          buildScaffoldMessenger(context: context, msg: state.errorModel.errorMessage!);
-        }
-      }
-  },
-  builder: (context, state) {
     return Form(
       key: MainDashboardCubit.get(context).dealWithChefRequestFormKey,
       child: Column(
@@ -86,35 +64,62 @@ class ChefRequestWidget extends StatelessWidget {
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
           SpaceWidget(height: 68,),
-          state is DealWithChefRequestLoadingState?
-          Center(child: CustomCircularProgressLoadingIndicator(),):
-          SharedButton(
-            btnSize: WidgetStatePropertyAll(
-              Size(188, 44),
-            ),
-            borderRadiusValue: 24,
-            btnText: 'Modify',
-            btnTextStyle: AppTextStyles.regular16(context).copyWith(
-              color: AppColors.white,
-              fontFamily: 'Poppins'
-            ),
-            btnColor: WidgetStatePropertyAll(
-                AppColors.primaryColor
-            ),
-            onPressessed: (){
-              if(MainDashboardCubit.get(context).dealWithChefRequestFormKey.currentState!.validate())
+          BlocConsumer<MainDashboardCubit, MainDashboardState>(
+              builder: (context, state)
+              {
+                if(state is DealWithChefRequestLoadingState)
                 {
-                  MainDashboardCubit.get(context).dealWithChefRequestFun(
-                      chefId: MainDashboardCubit.get(context).chefIdForControllerForChefRequest.text,
-                      status: MainDashboardCubit.get(context).statusControllerForChefRequest.text);
+                  return Center(child: CustomCircularProgressLoadingIndicator(),);
                 }
-            },
-          )
+                else
+                  {
+                    return SharedButton(
+                      btnSize: WidgetStatePropertyAll(
+                        Size(188, 44),
+                      ),
+                      borderRadiusValue: 24,
+                      btnText: 'Modify',
+                      btnTextStyle: AppTextStyles.regular16(context).copyWith(
+                          color: AppColors.white,
+                          fontFamily: 'Poppins'
+                      ),
+                      btnColor: WidgetStatePropertyAll(
+                          AppColors.primaryColor
+                      ),
+                      onPressessed: (){
+                        if(MainDashboardCubit.get(context).dealWithChefRequestFormKey.currentState!.validate())
+                        {
+                          MainDashboardCubit.get(context).dealWithChefRequestFun(
+                              chefId: MainDashboardCubit.get(context).chefIdForControllerForChefRequest.text,
+                              status: MainDashboardCubit.get(context).statusControllerForChefRequest.text);
+                        }
+                      },
+                    );
+                  }
 
+              },
+              listener: (context, state)
+              {
+                if(state is DealWithChefRequestSuccessState)
+                {
+                  buildScaffoldMessenger(context: context, msg: state.successMessage);
+                  MainDashboardCubit.get(context).statusControllerForChefRequest.clear();
+                  MainDashboardCubit.get(context).chefIdForControllerForChefRequest.clear();
+                }
+                if(state is DealWithChefRequestFailureState)
+                {
+                  if(state.errorModel.error!=null)
+                  {
+                    buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1,state.errorModel.error!.toString().length-1));
+                  }
+                  else
+                  {
+                    buildScaffoldMessenger(context: context, msg: state.errorModel.errorMessage!);
+                  }
+                }
+              },)
         ],
       ),
     );
-  },
-);
   }
 }

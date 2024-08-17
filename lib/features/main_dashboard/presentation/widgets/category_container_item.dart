@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utillis/app_colors.dart';
 import '../../../../core/utillis/app_styles.dart';
@@ -14,9 +15,10 @@ class CategoryContainerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsetsDirectional.symmetric(horizontal: 24.w,vertical: 10.h),
       decoration: BoxDecoration(
         color: itemIsSelected==true? AppColors.primaryColor :AppColors.transparent,
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.circular(100.r),
         border: Border.all(color: AppColors.primaryColor)
       ),
       child: FittedBox(
