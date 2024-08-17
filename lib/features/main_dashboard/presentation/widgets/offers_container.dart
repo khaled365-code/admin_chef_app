@@ -20,7 +20,7 @@ class OffersContainer extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
-                  color: AppColors.white.withOpacity(.4)
+                  color: AppColors.white.withOpacity(.6)
               ),
               child: Padding(
                 padding:  EdgeInsetsDirectional.only(bottom: 24.h),
