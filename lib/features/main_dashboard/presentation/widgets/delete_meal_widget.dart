@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/commons/functions/common_functions.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/progress_loading_indicator.dart';
 import '../../../../core/widgets/shared_button.dart';
 
@@ -23,7 +23,7 @@ class DeleteMealWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 72,),
+          const SpaceWidget(height: 72,),
           CustomOulinedTextField(
             controller: MainDashboardCubit.get(context).mealIdDeleteMealController,
             hintText: 'please enter meal id here !',
@@ -41,7 +41,7 @@ class DeleteMealWidget extends StatelessWidget {
             },
             onFieldSubmitted: (value){},
           ),
-          SpaceWidget(height: 68,),
+          const SpaceWidget(height: 68,),
           BlocConsumer<MainDashboardCubit, MainDashboardState>(
             listener: (context, state) {
              if(state is DeleteMealSuccessState)
@@ -64,10 +64,10 @@ class DeleteMealWidget extends StatelessWidget {
             builder: (context, state) {
               if(state is DeleteMealLoadingState)
                 {
-                  return Center(child: CustomCircularProgressLoadingIndicator(),);
+                  return const Center(child: CustomCircularProgressLoadingIndicator(),);
                 }
               return SharedButton(
-                btnSize: WidgetStatePropertyAll(
+                btnSize: const WidgetStatePropertyAll(
                   Size(188, 44),
                 ),
                 btnTextStyle: AppTextStyles.regular16(context).copyWith(
@@ -76,7 +76,7 @@ class DeleteMealWidget extends StatelessWidget {
                 ),
                 borderRadiusValue: 24,
                 btnText: 'Delete',
-                btnColor: WidgetStatePropertyAll(AppColors.primaryColor),
+                btnColor: const WidgetStatePropertyAll(AppColors.primaryColor),
                 onPressessed: () {
                   if (MainDashboardCubit.get(context)
                       .deleteMealFormKey

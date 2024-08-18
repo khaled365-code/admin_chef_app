@@ -1,9 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../utillis/app_colors.dart';
-import '../utillis/app_styles.dart';
-
+import '../utils/app_colors.dart';
+import '../utils/app_styles.dart';
 
 
 class SharedButton extends StatelessWidget {
@@ -20,8 +19,8 @@ class SharedButton extends StatelessWidget {
     return ElevatedButton(
 
       style: ButtonStyle(
-        fixedSize: btnSize??WidgetStatePropertyAll(Size.fromHeight(62)),
-        backgroundColor: btnColor??WidgetStatePropertyAll(AppColors.primaryColor),
+        fixedSize: btnSize?? const WidgetStatePropertyAll(Size.fromHeight(62)),
+        backgroundColor: btnColor?? const WidgetStatePropertyAll(AppColors.primaryColor),
         shape: WidgetStatePropertyAll(
            RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadiusValue??12),

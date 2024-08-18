@@ -2,10 +2,9 @@ import 'package:admin_chef_app/core/database/cache/cache_helper.dart';
 import 'package:admin_chef_app/core/routes/admin_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/commons/functions/common_functions.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 import '../cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 
@@ -19,7 +18,7 @@ class LogoutDesignWidget extends StatelessWidget {
         if(state is AdminLogoutSuccessState)
         {
           CacheHelper().clearData();
-          Future.delayed(Duration(seconds: 5));
+          Future.delayed(const Duration(seconds: 5));
           buildScaffoldMessenger(context: context, msg: 'Logout successfully !');
           navigate(context: context, route: AdminRoutes.adminLoginScreen);
         }
@@ -40,7 +39,7 @@ class LogoutDesignWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children:
           [
-            SpaceWidget(height: 72,),
+            const SpaceWidget(height: 72,),
             Text('Logout From System',
               style: AppTextStyles.bold23(context).copyWith(
                   color: AppColors.c07143B

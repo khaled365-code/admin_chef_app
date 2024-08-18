@@ -3,14 +3,14 @@
 
 import 'package:admin_chef_app/core/database/api/api_keys.dart';
 import 'package:admin_chef_app/core/database/cache/cache_helper.dart';
-import 'package:admin_chef_app/core/utillis/app_assets.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
 
 class BannerContainerWidget extends StatelessWidget {
   const BannerContainerWidget({super.key});
@@ -22,7 +22,7 @@ class BannerContainerWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
-            image: DecorationImage(
+            image: const DecorationImage(
                 image: AssetImage(
                   ImageConstants.bannerImage,)),
         ),
@@ -31,10 +31,10 @@ class BannerContainerWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Spacer(),
+              const Spacer(),
               Text('Hello, ${CacheHelper().getData(key: ApiKeys.name)}',
                         style: AppTextStyles.bold23(context).copyWith(color: AppColors.c07143B)),
-              SpaceWidget(height: 24,),
+              const SpaceWidget(height: 24,),
               RichText(text: TextSpan(
                 children: [
                       TextSpan(
@@ -51,7 +51,7 @@ class BannerContainerWidget extends StatelessWidget {
                               .copyWith(color: AppColors.c959895))
                     ],
               )),
-              SpaceWidget(height: 24,),
+              const SpaceWidget(height: 24,),
               ElevatedButton(
                   onPressed: (){
                     MainDashboardCubit.get(context).allChefsData=null;
@@ -74,7 +74,7 @@ class BannerContainerWidget extends StatelessWidget {
                   backgroundColor: AppColors.primaryColor,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
 
 
             ]))

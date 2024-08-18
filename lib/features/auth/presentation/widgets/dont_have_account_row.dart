@@ -3,8 +3,8 @@
 import 'package:admin_chef_app/core/commons/functions/common_functions.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 
 class DontHaveAccountRow extends StatelessWidget {
@@ -26,7 +26,7 @@ class DontHaveAccountRow extends StatelessWidget {
               fontFamily: 'Poppins'
           ),
         ),
-        SpaceWidget(
+        const SpaceWidget(
           width: 8,
         ),
         GestureDetector(

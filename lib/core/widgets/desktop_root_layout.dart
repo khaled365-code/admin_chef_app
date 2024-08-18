@@ -1,8 +1,8 @@
 
-import 'package:admin_chef_app/core/database/api/api_keys.dart';
-import 'package:admin_chef_app/core/database/cache/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../database/api/api_keys.dart';
+import '../database/cache/cache_helper.dart';
 import '../routes/admin_router.dart';
 import '../routes/admin_routes.dart';
 
@@ -14,10 +14,9 @@ class DesktopRootLayout extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(1920, 2114),
       builder: (context, child) {
-        print(MediaQuery.sizeOf(context).width);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: CacheHelper().getData(key: ApiKeys.token)!=null? AdminRoutes.mainDashboardScreen:AdminRoutes.adminLoginScreen,
+          initialRoute:  CacheHelper().getData(key: ApiKeys.token)!=null? AdminRoutes.mainDashboardScreen:AdminRoutes.adminLoginScreen,
           onGenerateRoute: AdminRouter.generateAppRoutes,
         );
       },

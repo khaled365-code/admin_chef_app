@@ -1,11 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/commons/functions/common_functions.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 import '../cubits/login_cubit/login_cubit.dart';
 
@@ -34,10 +32,10 @@ class TermsAndConditionsRow extends StatelessWidget {
               border: Border.all(
                   color: AppColors.c959895)),
           child: loginCubit.termsCheckBoxValue==true?
-          Icon(Icons.check,color: AppColors.c060606,size: 17,):SizedBox.shrink(),
+          const Icon(Icons.check,color: AppColors.c060606,size: 17,):const SizedBox.shrink(),
         ),
         ),
-        SpaceWidget(
+        const SpaceWidget(
           width: 8,
         ),
         Text(
@@ -48,7 +46,7 @@ class TermsAndConditionsRow extends StatelessWidget {
               fontFamily: 'Poppins'
           ),
         ),
-        Spacer(),
+        const Spacer(),
         GestureDetector(
           onTap: ()
           {

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../features/auth/presentation/cubits/login_cubit/login_cubit.dart';
-import '../../utillis/app_colors.dart';
-import '../../utillis/app_styles.dart';
+import '../../utils/app_colors.dart';
+import '../../utils/app_styles.dart';
 
 void navigate({required BuildContext context ,required String route, Object? arg,bool replacement=false})
 {

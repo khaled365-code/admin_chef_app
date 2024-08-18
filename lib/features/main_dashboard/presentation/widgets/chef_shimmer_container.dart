@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../core/utillis/app_assets.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 
 class ChefShimmerContainer extends StatelessWidget {
@@ -25,20 +25,20 @@ class ChefShimmerContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 40,),
+          const SpaceWidget(height: 40,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
             child: Container(
               width: 113,
               height: 113,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(image: AssetImage(ImageConstants.chefBigImage),fit: BoxFit.fill)
               ),
             ),
           ),
-          SpaceWidget(height: 40,),
+          const SpaceWidget(height: 40,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -48,7 +48,7 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-          SpaceWidget(height: 8,),
+          const SpaceWidget(height: 8,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -58,7 +58,7 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-          SpaceWidget(height: 8,),
+          const SpaceWidget(height: 8,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -68,7 +68,7 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-          SpaceWidget(height: 24,),
+          const SpaceWidget(height: 24,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,
@@ -78,7 +78,7 @@ class ChefShimmerContainer extends StatelessWidget {
               ),),
             ),
           ),
-          SpaceWidget(height: 8,),
+          const SpaceWidget(height: 8,),
           Shimmer.fromColors(
             baseColor: AppColors.white,
             highlightColor: AppColors.cD1D8E0,

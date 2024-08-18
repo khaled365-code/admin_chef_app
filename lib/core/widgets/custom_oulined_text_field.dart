@@ -2,10 +2,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import '../utillis/app_colors.dart';
-import '../utillis/app_styles.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_styles.dart';
 
 class CustomOulinedTextField extends StatelessWidget {
   const CustomOulinedTextField({super.key, this.validator, this.cursorColor, required this.controller, this.contentPadding, this.fillColor, this.hintText, this.labelText, this.floatingLabelBehavior, this.onFieldSubmitted, this.keyboardInputType});
@@ -28,7 +26,7 @@ class CustomOulinedTextField extends StatelessWidget {
       cursorColor: cursorColor??AppColors.primaryColor,
       controller: controller,
       decoration: InputDecoration(
-        contentPadding: contentPadding??EdgeInsetsDirectional.only(start: 10),
+        contentPadding: contentPadding??const EdgeInsetsDirectional.only(start: 10),
         floatingLabelStyle: AppTextStyles.regular16(context).copyWith(
           color: AppColors.c959895,
         ),
@@ -42,17 +40,17 @@ class CustomOulinedTextField extends StatelessWidget {
         ),
         hintText: hintText,
         floatingLabelBehavior: floatingLabelBehavior,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
             borderSide: BorderSide(
               color: AppColors.primaryColor,
             )
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: AppColors.primaryColor,
             )
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: AppColors.primaryColor,
             )

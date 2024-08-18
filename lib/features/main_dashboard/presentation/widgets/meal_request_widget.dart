@@ -3,10 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/commons/functions/common_functions.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/custom_oulined_text_field.dart';
 import '../../../../core/widgets/progress_loading_indicator.dart';
 import '../../../../core/widgets/shared_button.dart';
@@ -23,7 +22,7 @@ class MealRequestWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 72,),
+          const SpaceWidget(height: 72,),
           CustomOulinedTextField(
             controller: MainDashboardCubit.get(context).mealIdControllerForMealRequest,
             hintText: 'please write meal id here !',
@@ -41,7 +40,7 @@ class MealRequestWidget extends StatelessWidget {
             },
             onFieldSubmitted: (value){},
           ),
-          SpaceWidget(height: 52,),
+          const SpaceWidget(height: 52,),
           CustomOulinedTextField(
             controller: MainDashboardCubit.get(context).mealStatusControllerForMealRequest,
             validator: (value){
@@ -63,21 +62,21 @@ class MealRequestWidget extends StatelessWidget {
             labelText: 'Status',
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
-          SpaceWidget(height: 68,),
+          const SpaceWidget(height: 68,),
           BlocConsumer<MainDashboardCubit, MainDashboardState>(
               builder: (context,state)
               {
                 if (state is DealWithMealRequestLoadingState)
                   {
-                    return  Center(child: CustomCircularProgressLoadingIndicator(),);
+                    return  const Center(child: CustomCircularProgressLoadingIndicator(),);
                   }
                 return SharedButton(
-                  btnSize: WidgetStatePropertyAll(
+                  btnSize: const WidgetStatePropertyAll(
                     Size(188, 44),
                   ),
                   borderRadiusValue: 24,
                   btnText: 'Modify',
-                  btnColor: WidgetStatePropertyAll(
+                  btnColor: const WidgetStatePropertyAll(
                       AppColors.primaryColor
                   ),
                   btnTextStyle: AppTextStyles.regular16(context).copyWith(

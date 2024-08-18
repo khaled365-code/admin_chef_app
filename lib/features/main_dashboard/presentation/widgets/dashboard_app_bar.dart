@@ -4,10 +4,9 @@ import 'package:admin_chef_app/core/database/api/api_keys.dart';
 import 'package:admin_chef_app/core/database/cache/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/utillis/app_assets.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 
 class DashboardAppBar extends StatelessWidget {
@@ -27,15 +26,15 @@ class DashboardAppBar extends StatelessWidget {
                 padding:  EdgeInsetsDirectional.only(start: 30.w,top: 7.h,bottom: 7.h),
                 child: Image.asset(ImageConstants.adminLogoAImage),
               ),
-              Spacer(),
+              const Spacer(),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColors.cFFF3EB,
                   shape: BoxShape.circle
                 ),
                 child: Image.asset(ImageConstants.adminImage),
               ),
-              SpaceWidget(width: 16,),
+              const SpaceWidget(width: 16,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -50,10 +49,10 @@ class DashboardAppBar extends StatelessWidget {
 
                 ],
               ),
-              SpaceWidget(width: 32,),
+              const SpaceWidget(width: 32,),
             ],
           ),
-          SpaceWidget(height: 15,),
+          const SpaceWidget(height: 15,),
         ],
       ),
     );

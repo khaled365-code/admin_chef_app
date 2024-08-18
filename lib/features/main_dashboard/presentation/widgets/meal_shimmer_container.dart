@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../../../core/utillis/app_assets.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 
 class MealShimmerContainer extends StatelessWidget {
@@ -28,7 +27,7 @@ class MealShimmerContainer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SpaceWidget(height: 280,),
+                const SpaceWidget(height: 280,),
                 Shimmer.fromColors(
                   baseColor: AppColors.white,
                   highlightColor: AppColors.cD1D8E0,
@@ -37,7 +36,7 @@ class MealShimmerContainer extends StatelessWidget {
                     )),
                   ),
                 ),
-                SpaceWidget(height: 8,),
+                const SpaceWidget(height: 8,),
                 Shimmer.fromColors(
                   baseColor: AppColors.white,
                   highlightColor: AppColors.cD1D8E0,
@@ -46,7 +45,7 @@ class MealShimmerContainer extends StatelessWidget {
                     )),
                   ),
                 ),
-                SpaceWidget(height: 24,),
+                const SpaceWidget(height: 24,),
                 Shimmer.fromColors(
                   baseColor: AppColors.white,
                   highlightColor: AppColors.cD1D8E0,
@@ -55,7 +54,7 @@ class MealShimmerContainer extends StatelessWidget {
                     )),
                   ),
                 ),
-                SpaceWidget(height: 8,),
+                const SpaceWidget(height: 8,),
                 Shimmer.fromColors(
                   baseColor: AppColors.white,
                   highlightColor: AppColors.cD1D8E0,
@@ -64,7 +63,7 @@ class MealShimmerContainer extends StatelessWidget {
                     )),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   children: [
                     Shimmer.fromColors(
@@ -74,14 +73,14 @@ class MealShimmerContainer extends StatelessWidget {
                         child: Text('chef details',style: AppTextStyles.regular15(context).copyWith()),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Shimmer.fromColors(
                       baseColor: AppColors.white,
                       highlightColor: AppColors.cD1D8E0,
                       child: Container(
                         width: 30,
                         height: 30,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
                         child: Padding(
@@ -92,7 +91,7 @@ class MealShimmerContainer extends StatelessWidget {
                     )
                   ],
                 ),
-                SpaceWidget(height: 96,),
+                const SpaceWidget(height: 96,),
               ],
             ),
           ),
@@ -107,7 +106,7 @@ class MealShimmerContainer extends StatelessWidget {
             child: Container(
               width: 140,
               height: 140,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(image: AssetImage(ImageConstants.cartImage1),fit: BoxFit.cover,),
               ),

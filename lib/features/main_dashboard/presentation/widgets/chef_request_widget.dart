@@ -2,14 +2,13 @@
 
 
 import 'package:admin_chef_app/core/commons/functions/common_functions.dart';
-import 'package:admin_chef_app/core/utillis/app_styles.dart';
 import 'package:admin_chef_app/core/widgets/custom_oulined_text_field.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/utillis/app_colors.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/progress_loading_indicator.dart';
 import '../../../../core/widgets/shared_button.dart';
 
@@ -23,7 +22,7 @@ class ChefRequestWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 72,),
+          const SpaceWidget(height: 72,),
           CustomOulinedTextField(
               controller: MainDashboardCubit.get(context).chefIdForControllerForChefRequest,
             hintText: 'please write chef id here !',
@@ -41,7 +40,7 @@ class ChefRequestWidget extends StatelessWidget {
             },
             onFieldSubmitted: (value){},
           ),
-          SpaceWidget(height: 52,),
+          const SpaceWidget(height: 52,),
           CustomOulinedTextField(
               controller: MainDashboardCubit.get(context).statusControllerForChefRequest,
             validator: (value){
@@ -63,18 +62,18 @@ class ChefRequestWidget extends StatelessWidget {
             labelText: 'Status',
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
-          SpaceWidget(height: 68,),
+          const SpaceWidget(height: 68,),
           BlocConsumer<MainDashboardCubit, MainDashboardState>(
               builder: (context, state)
               {
                 if(state is DealWithChefRequestLoadingState)
                 {
-                  return Center(child: CustomCircularProgressLoadingIndicator(),);
+                  return const Center(child: CustomCircularProgressLoadingIndicator(),);
                 }
                 else
                   {
                     return SharedButton(
-                      btnSize: WidgetStatePropertyAll(
+                      btnSize: const WidgetStatePropertyAll(
                         Size(188, 44),
                       ),
                       borderRadiusValue: 24,
@@ -83,7 +82,7 @@ class ChefRequestWidget extends StatelessWidget {
                           color: AppColors.white,
                           fontFamily: 'Poppins'
                       ),
-                      btnColor: WidgetStatePropertyAll(
+                      btnColor: const WidgetStatePropertyAll(
                           AppColors.primaryColor
                       ),
                       onPressessed: (){

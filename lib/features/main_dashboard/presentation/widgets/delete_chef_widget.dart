@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/commons/functions/common_functions.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/custom_oulined_text_field.dart';
 import '../../../../core/widgets/progress_loading_indicator.dart';
 import '../../../../core/widgets/shared_button.dart';
@@ -22,7 +22,7 @@ class DeleteChefWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpaceWidget(height: 72,),
+          const SpaceWidget(height: 72,),
           CustomOulinedTextField(
             controller: MainDashboardCubit.get(context).deleteChefIdController,
             hintText: 'please enter chef id here !',
@@ -40,7 +40,7 @@ class DeleteChefWidget extends StatelessWidget {
             },
             onFieldSubmitted: (value){},
           ),
-          SpaceWidget(height: 68,),
+          const SpaceWidget(height: 68,),
           BlocConsumer<MainDashboardCubit, MainDashboardState>(
             listener: (context, state) {
               if(state is DeleteChefSuccessState)
@@ -63,10 +63,10 @@ class DeleteChefWidget extends StatelessWidget {
             builder: (context, state) {
               if(state is DeleteChefLoadingState)
               {
-                return Center(child: CustomCircularProgressLoadingIndicator(),);
+                return const Center(child: CustomCircularProgressLoadingIndicator(),);
               }
               return SharedButton(
-                btnSize: WidgetStatePropertyAll(
+                btnSize: const WidgetStatePropertyAll(
                   Size(188, 44),
                 ),
                 borderRadiusValue: 24,
@@ -75,7 +75,7 @@ class DeleteChefWidget extends StatelessWidget {
                     color: AppColors.white,
                     fontFamily: 'Poppins'
                 ),
-                btnColor: WidgetStatePropertyAll(AppColors.primaryColor),
+                btnColor: const WidgetStatePropertyAll(AppColors.primaryColor),
                 onPressessed: () {
                   if (MainDashboardCubit.get(context)
                       .deleteChefFormKey

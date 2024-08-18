@@ -1,10 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/utillis/app_assets.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/space_widget.dart';
 
 class OffersContainer extends StatelessWidget {
@@ -35,7 +34,7 @@ class OffersContainer extends StatelessWidget {
                             style: AppTextStyles.bold18(context)
                                 .copyWith(color: AppColors.c07143B)),
                       ),
-                      SpaceWidget(height: 18,),
+                      const SpaceWidget(height: 18,),
                       Text('The home of your stomach',
                           style: AppTextStyles.semiBold14(context)
                               .copyWith(color: AppColors.c959895)),

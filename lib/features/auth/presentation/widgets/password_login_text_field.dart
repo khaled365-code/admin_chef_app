@@ -1,10 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-
 import '../../../../core/commons/functions/common_functions.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../cubits/login_cubit/login_cubit.dart';
 
 class PasswordLoginTextField extends StatelessWidget {
@@ -67,13 +66,13 @@ class PasswordLoginTextField extends StatelessWidget {
               },
               child: Icon(
                 loginCubit.suffixIcon,color: AppColors.c959895,)),
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: const UnderlineInputBorder(
+              borderSide:  BorderSide(
+                  color: AppColors.primaryColor)),
+          border: const UnderlineInputBorder(
               borderSide: BorderSide(
                   color: AppColors.primaryColor)),
-          border: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color: AppColors.primaryColor)),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
                   color: AppColors.primaryColor))),
     );

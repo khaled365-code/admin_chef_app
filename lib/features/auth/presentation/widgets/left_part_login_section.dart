@@ -1,11 +1,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../../core/utillis/app_assets.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/space_widget.dart';
 
 class ImageAdminLoginSection extends StatelessWidget {
@@ -21,11 +18,11 @@ class ImageAdminLoginSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SpaceWidget(height: 52,),
+          const SpaceWidget(height: 52,),
           Image.asset(
             ImageConstants.dishes4Image,
           ),
-          SpaceWidget(height: 52)
+          const SpaceWidget(height: 52)
         ],
       ),
     );

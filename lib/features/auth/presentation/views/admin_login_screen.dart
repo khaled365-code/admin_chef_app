@@ -3,15 +3,15 @@
 
 import 'package:admin_chef_app/core/commons/functions/common_functions.dart';
 import 'package:admin_chef_app/core/routes/admin_routes.dart';
-import 'package:admin_chef_app/core/utillis/app_styles.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../core/utillis/app_assets.dart';
-import '../../../../core/utillis/app_colors.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/progress_loading_indicator.dart';
 import '../widgets/dont_have_account_row.dart';
 import '../widgets/email_login_text_field.dart';
@@ -38,7 +38,7 @@ class AdminLoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                             child: ImageAdminLoginSection()),
                         Container(
                           width: 87.w,
@@ -81,13 +81,13 @@ class AdminLoginScreen extends StatelessWidget {
                                                   fontFamily: 'Poppins'),
                                           ),
                                         ),
-                                        SpaceWidget(height: 210,),
+                                        const SpaceWidget(height: 210,),
                                         Text(
                                           'Welcome !',
                                           style: AppTextStyles.bold40(context).copyWith(
                                                       color: AppColors.c07143B),
                                         ),
-                                        SpaceWidget(height: 14,),
+                                        const SpaceWidget(height: 14,),
                                         Text(
                                           'Welcome back, Please enter your details.',
                                           style: AppTextStyles.regular16(context).copyWith(
@@ -95,21 +95,21 @@ class AdminLoginScreen extends StatelessWidget {
                                             fontFamily: 'Poppins',
                                           ),
                                         ),
-                                        SpaceWidget(height: 30,),
+                                        const SpaceWidget(height: 30,),
                                         EmailLoginTextField(loginCubit: LoginCubit.get(context)),
-                                        SpaceWidget(height: 30,),
+                                        const SpaceWidget(height: 30,),
                                         PasswordLoginTextField(loginCubit: LoginCubit.get(context)),
-                                        SpaceWidget(height: 36,),
+                                        const SpaceWidget(height: 36,),
                                         TermsAndConditionsRow(loginCubit: LoginCubit.get(context)),
-                                        SpaceWidget(height: 36,),
+                                        const SpaceWidget(height: 36,),
                                         state is LoginLoadingState ?
                                         const Center(
                                         child: CustomCircularProgressLoadingIndicator(
                                           progressIndicatorColor: AppColors.primaryColor,))
                                         : LoginButton(loginCubit: LoginCubit.get(context)),
-                                          SpaceWidget(height: 45,),
-                                        DontHaveAccountRow(),
-                                        Spacer()
+                                          const SpaceWidget(height: 45,),
+                                        const DontHaveAccountRow(),
+                                        const Spacer()
                                       ],),
                               );},),),
                             ),),

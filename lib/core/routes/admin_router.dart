@@ -4,7 +4,6 @@ import 'package:admin_chef_app/features/auth/data/repos/auth_repo_implementation
 import 'package:admin_chef_app/features/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import 'package:admin_chef_app/features/main_dashboard/data/repos/dashboard_repo_implementation.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/views/admin_login_screen.dart';
@@ -21,7 +20,7 @@ class AdminRouter {
               create: (context) =>
                   LoginCubit(authRepoImplementation: serviceLocator.get<
                       AuthRepoImplementation>()),
-              child: AdminLoginScreen(),
+              child: const AdminLoginScreen(),
             ),);
       case AdminRoutes.mainDashboardScreen:
         return MaterialPageRoute(builder: (context) =>
@@ -29,7 +28,7 @@ class AdminRouter {
               create: (context) => MainDashboardCubit(
                 dashBoardRepoImplementation: serviceLocator.get<DashBoardRepoImplementation>()
               ),
-              child: MainDashboardScreen(),
+              child: const MainDashboardScreen(),
             ),);
     }
   }

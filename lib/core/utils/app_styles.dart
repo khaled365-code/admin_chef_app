@@ -2,7 +2,7 @@
 
 
 
-import 'package:admin_chef_app/core/utillis/size_config.dart';
+import 'package:admin_chef_app/core/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'fontweight_helper.dart';

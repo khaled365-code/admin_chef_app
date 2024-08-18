@@ -2,8 +2,7 @@
 
 
 import 'package:flutter/material.dart';
-
-import '../utillis/app_colors.dart';
+import '../utils/app_colors.dart';
 
 class CustomCircularProgressLoadingIndicator extends StatelessWidget {
   const CustomCircularProgressLoadingIndicator({super.key, this.progressIndicatorColor});

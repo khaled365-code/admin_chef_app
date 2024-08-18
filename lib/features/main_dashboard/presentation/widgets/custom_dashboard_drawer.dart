@@ -1,16 +1,12 @@
-import 'dart:developer';
 
-import 'package:admin_chef_app/core/database/api/api_keys.dart';
-import 'package:admin_chef_app/core/database/cache/cache_helper.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/utillis/app_colors.dart';
 import '../../../../core/widgets/line_widget.dart';
 import 'drawer_list_tile.dart';
+import '../../../../core/utils/app_colors.dart';
 
 class CustomDashboardDrawer extends StatelessWidget {
   const CustomDashboardDrawer({super.key});
@@ -27,10 +23,10 @@ class CustomDashboardDrawer extends StatelessWidget {
                     hasScrollBody: false,
                     child: Column(
                       children: [
-                        LineWidget(
+                        const LineWidget(
                           height: 4,
                         ),
-                        SpaceWidget(height: 24,),
+                        const SpaceWidget(height: 24,),
                         ...MainDashboardCubit.get(context).firstDrawerDataList.asMap().entries.map((e) {
                           int index=e.key;
                           return  Padding(
@@ -68,8 +64,8 @@ class CustomDashboardDrawer extends StatelessWidget {
                                 },
                                 drawerDataModel: MainDashboardCubit.get(context).firstDrawerDataList[index]),
                           );
-                        },).toList(),
-                        Spacer(),
+                        },),
+                        const Spacer(),
                         ...List.generate(
                           MainDashboardCubit.get(context).secondDrawerDataList.length,
                               (index) => Padding(
@@ -101,7 +97,7 @@ class CustomDashboardDrawer extends StatelessWidget {
                               },
                             ),
                           ),),
-                        SpaceWidget(height: 24,),
+                        const SpaceWidget(height: 24,),
                       ],
                     )
                 )

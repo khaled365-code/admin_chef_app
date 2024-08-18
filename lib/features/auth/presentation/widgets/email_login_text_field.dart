@@ -4,8 +4,8 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/commons/functions/common_functions.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../cubits/login_cubit/login_cubit.dart';
 
 class EmailLoginTextField extends StatelessWidget {
@@ -64,13 +64,13 @@ class EmailLoginTextField extends StatelessWidget {
             color: AppColors.c959895,
             fontFamily: 'Poppins'
           ),
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
                   color: AppColors.primaryColor)),
-          border: UnderlineInputBorder(
+          border: const UnderlineInputBorder(
               borderSide: BorderSide(
                   color: AppColors.primaryColor)),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
                   color: AppColors.primaryColor))),
     );

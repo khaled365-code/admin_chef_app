@@ -1,7 +1,8 @@
 
 
- import 'package:admin_chef_app/core/utillis/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/size_config.dart';
 
 class AdaptiveLayoutWidget extends StatelessWidget {
    const AdaptiveLayoutWidget({super.key, required this.mobileLayout, required this.tabletLayout, required this.desktopLayout});

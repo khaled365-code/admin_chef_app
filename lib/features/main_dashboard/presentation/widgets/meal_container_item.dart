@@ -1,12 +1,12 @@
 
 
-import 'package:admin_chef_app/core/utillis/app_assets.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../core/utillis/app_colors.dart';
-import '../../../../core/utillis/app_styles.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../data/models/all_system_meals_model/meals.dart';
 
 class MealContainerItem extends StatefulWidget {
@@ -42,35 +42,35 @@ class _MealContainerItemState extends State<MealContainerItem> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children:
               [
-                SpaceWidget(height: 280,),
+                const SpaceWidget(height: 280,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(widget.systemMeals.name!,style: AppTextStyles.semiBold16(context).copyWith(
                       color: widget.containerISSelected==true?AppColors.white:AppColors.c07143B
                   )),
                 ),
-                SpaceWidget(height: 8,),
+                const SpaceWidget(height: 8,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(widget.systemMeals.description!,style: AppTextStyles.regular13(context).copyWith(
                       color: widget.containerISSelected==true?AppColors.white:AppColors.c959895
                   )),
                 ),
-                SpaceWidget(height: 24,),
+                const SpaceWidget(height: 24,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text('Id :${widget.systemMeals.id!}',style: AppTextStyles.regular13(context).copyWith(
                       color: widget.containerISSelected==true?AppColors.white:AppColors.cEA6A12
                   )),
                 ),
-                SpaceWidget(height: 8,),
+                const SpaceWidget(height: 8,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text('status : ${widget.systemMeals.status!} Meal',style: AppTextStyles.regular13(context).copyWith(
                       color:  widget.containerISSelected==true?AppColors.white:AppColors.primaryColor
                   )),
                 ),
-                Spacer(),
+                const Spacer(),
                 GestureDetector(
                   onTap: ()
                   {
@@ -83,7 +83,7 @@ class _MealContainerItemState extends State<MealContainerItem> {
                       Text('chef details',style: AppTextStyles.regular15(context).copyWith(
                           color:  widget.containerISSelected==true?AppColors.white:AppColors.primaryColor
                       )),
-                      Spacer(),
+                      const Spacer(),
                       Container(
                         width: 30,
                         height: 30,
@@ -99,20 +99,20 @@ class _MealContainerItemState extends State<MealContainerItem> {
                     ],
                   ),
                 ),
-                SpaceWidget(height: 96,),
+                const SpaceWidget(height: 96,),
               ],
             ):
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children:
               [
-                SpaceWidget(height: 280,),
+                const SpaceWidget(height: 280,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
                   child: Text(widget.systemMeals.chefId!.name!,style: AppTextStyles.semiBold16(context).copyWith(color: widget.containerISSelected==true?AppColors.white:AppColors.c07143B)),
                 ),
-                SpaceWidget(height: 8,),
+                const SpaceWidget(height: 8,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
@@ -120,7 +120,7 @@ class _MealContainerItemState extends State<MealContainerItem> {
                       color: widget.containerISSelected==true?AppColors.white:AppColors.c959895
                   )),
                 ),
-                SpaceWidget(height: 24,),
+                const SpaceWidget(height: 24,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
@@ -128,7 +128,7 @@ class _MealContainerItemState extends State<MealContainerItem> {
                       color:  widget.containerISSelected==true?AppColors.white:AppColors.primaryColor
                   )),
                 ),
-                SpaceWidget(height: 8,),
+                const SpaceWidget(height: 8,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
@@ -136,7 +136,7 @@ class _MealContainerItemState extends State<MealContainerItem> {
                       color:  widget.containerISSelected==true?AppColors.white:AppColors.primaryColor
                   )),
                 ),
-                Spacer(),
+                const Spacer(),
                 GestureDetector(
                   onTap: ()
                   {
@@ -150,7 +150,7 @@ class _MealContainerItemState extends State<MealContainerItem> {
                               color: widget.containerISSelected == true ? AppColors.white : AppColors.primaryColor),
                         ),
                       ),
-                      SpaceWidget(height: 96,),
+                const SpaceWidget(height: 96,),
               ],
             ),
           ),

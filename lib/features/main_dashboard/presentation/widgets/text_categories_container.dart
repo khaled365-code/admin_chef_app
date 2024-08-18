@@ -1,13 +1,10 @@
-import 'package:admin_chef_app/core/utillis/app_colors.dart';
-import 'package:admin_chef_app/core/utillis/app_styles.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../../core/utillis/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import 'category_container_item.dart';
 
 class TextCategoriesContainer extends StatelessWidget {
@@ -20,33 +17,33 @@ class TextCategoriesContainer extends StatelessWidget {
             color: AppColors.white.withOpacity(.6),
             borderRadius: BorderRadius.circular(24.r),
           ),
-          child: Column(
+          child:  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SpaceWidget(height: 24,),
+              const SpaceWidget(height: 24,),
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 24.w),
                 child: Text('Categories',
                   style: AppTextStyles.bold16(context).copyWith(
                       color: AppColors.c07143B,
                   ),)),
-              SpaceWidget(height: 43,),
+              const SpaceWidget(height: 43,),
               Padding(
                 padding:  EdgeInsets.symmetric(horizontal: 24.w),
-                child: Divider(
+                child: const Divider(
                   color: AppColors.cE9ECEF,
                   thickness: 2,
                 ),
               ),
-              SpaceWidget(height: 43,),
+              const SpaceWidget(height: 43,),
               BlocBuilder<MainDashboardCubit,MainDashboardState>(
                   builder: (context,state)
                   {
                     return  GridView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: MainDashboardCubit.get(context).categoriesList.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         childAspectRatio:128/48 ,
                         mainAxisSpacing: 24,
                         crossAxisSpacing: 32,
@@ -63,7 +60,7 @@ class TextCategoriesContainer extends StatelessWidget {
                             ),
                           ),);
                   }),
-              SpaceWidget(height: 43,),
+              const SpaceWidget(height: 43,),
             ],
           ),
         );
