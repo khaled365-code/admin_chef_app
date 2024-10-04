@@ -55,13 +55,21 @@ class ChefDataContainer extends StatelessWidget {
                 color: containerIsSelected==true?AppColors.white:AppColors.c898E99
             ),),
             const SpaceWidget(height: 24,),
-            Text('Id : ${chefsData.id!}',style: AppTextStyles.regular13(context).copyWith(
-                color: containerIsSelected==true?AppColors.white:AppColors.primaryColor
-            ),),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: AlignmentDirectional.centerStart,
+              child: Text('Id : ${chefsData.id!}',style: AppTextStyles.regular13(context).copyWith(
+                  color: containerIsSelected==true?AppColors.white:AppColors.primaryColor
+              ),),
+            ),
             const SpaceWidget(height: 8,),
-            Text('Chef Status : ${chefsData.status!}',style: AppTextStyles.regular13(context).copyWith(
-                color: containerIsSelected==true?AppColors.white:AppColors.primaryColor
-            ),),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: AlignmentDirectional.centerStart,
+              child: Text('Chef Status : ${chefsData.status!}',style: AppTextStyles.regular13(context).copyWith(
+                  color: containerIsSelected==true?AppColors.white:AppColors.primaryColor
+              ),),
+            ),
 
 
 

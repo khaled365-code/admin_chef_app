@@ -1,8 +1,10 @@
 
 
 
+import 'package:admin_chef_app/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/commons/functions/common_functions.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -83,7 +85,8 @@ class MealRequestWidget extends StatelessWidget {
                       color: AppColors.white,
                       fontFamily: 'Poppins'
                   ),
-                  onPressessed: (){
+                  onPressessed: ()
+                  {
                     if(MainDashboardCubit.get(context).dealWithMealRequestFormKey.currentState!.validate())
                     {
                       MainDashboardCubit.get(context).dealWithMealRequestFun(
@@ -97,27 +100,46 @@ class MealRequestWidget extends StatelessWidget {
               {
                   if (state is DealWithMealRequestSuccessState)
                   {
-                    buildScaffoldMessenger(context: context, msg: state.successMessage);
-                    MainDashboardCubit.get(context).mealIdControllerForMealRequest.clear();
-                    MainDashboardCubit.get(context).mealStatusControllerForMealRequest.clear();
+                    mealRequestSuccessListenerFun(context, state);
                   }
                   if (state is DealWithMealRequestFailureState)
                   {
-                    if (state.errorModel.error != null)
-                    {
-                      buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1, state.errorModel.error!.toString().length - 1));
-                    }
-                    else
-                    {
-                      buildScaffoldMessenger(
-                          context: context,
-                          msg: state.errorModel.errorMessage!);
-                    }
+                    mealRequestFailureListenerFun(state, context);
                   }
                 },
               ),
         ],
       ),
     );
+  }
+
+  void mealRequestFailureListenerFun(DealWithMealRequestFailureState state, BuildContext context) {
+    if (state.errorModel.error != null)
+    {
+      buildScaffoldMessenger(
+          iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+          context: context,
+          msg: state.errorModel.error!.toString().substring(
+              1,
+              state.errorModel.error!.toString().length - 1));
+    }
+    else
+    {
+      buildScaffoldMessenger(
+          iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25),
+          context: context,
+          msg: state.errorModel.errorMessage!);
+    }
+  }
+
+  void mealRequestSuccessListenerFun(BuildContext context, DealWithMealRequestSuccessState state) {
+     buildScaffoldMessenger(
+        context: context,
+        msg: state.successMessage,
+      iconWidget: SvgPicture.asset(ImageConstants.checkCircleIcon),
+      snackBarBehavior: SnackBarBehavior.floating
+    );
+    MainDashboardCubit.get(context).mealIdControllerForMealRequest.clear();
+    MainDashboardCubit.get(context).mealStatusControllerForMealRequest.clear();
   }
 }

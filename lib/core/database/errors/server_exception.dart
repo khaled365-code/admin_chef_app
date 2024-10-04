@@ -6,7 +6,6 @@ import 'error_model.dart';
 class ServerException implements Exception
 {
   final ErrorModel errorModel;
-
   ServerException({required this.errorModel});
 }
 
@@ -56,6 +55,10 @@ void handleExceptions(DioException e)
         case 504:
           throw ServerException(
               errorModel: ErrorModel.fromJson(e.response!.data));
+
+        default:
+          throw ServerException(
+              errorModel: ErrorModel.fromJson(e.response!.data));
       }
     case DioExceptionType.cancel:
       throw ServerException(
@@ -66,5 +69,7 @@ void handleExceptions(DioException e)
     case DioExceptionType.unknown:
       throw ServerException(
           errorModel:ErrorModel.fromJson(e.response!.data));
+    default:
+      throw ServerException(errorModel: ErrorModel.fromJson(e.response!.data));
   }
 }

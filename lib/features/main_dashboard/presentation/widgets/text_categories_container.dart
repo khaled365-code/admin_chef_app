@@ -1,4 +1,5 @@
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
+import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,13 +37,13 @@ class TextCategoriesContainer extends StatelessWidget {
                 ),
               ),
               const SpaceWidget(height: 43,),
-              BlocBuilder<MainDashboardCubit,MainDashboardState>(
+              BlocBuilder<CategoriesCubit,CategoriesState>(
                   builder: (context,state)
                   {
                     return  GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: MainDashboardCubit.get(context).categoriesList.length,
+                      itemCount: CategoriesCubit.get(context).categoriesList.length,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         childAspectRatio:128/48 ,
                         mainAxisSpacing: 24,
@@ -52,11 +53,11 @@ class TextCategoriesContainer extends StatelessWidget {
                       itemBuilder: (context, index) =>
                           GestureDetector(
                             onTap: () {
-                              MainDashboardCubit.get(context).updateSelectedCategoryIndex(currentIndex: index);
+                              CategoriesCubit.get(context).updateSelectedCategoryIndex(currentIndex: index);
                             },
                             child: CategoryContainerItem(
-                              itemIsSelected: MainDashboardCubit.get(context).selectedCategoryIndex == index,
-                              categoriesDataModel: MainDashboardCubit.get(context).categoriesList[index],
+                              itemIsSelected: CategoriesCubit.get(context).selectedCategoryIndex == index,
+                              categoriesDataModel: CategoriesCubit.get(context).categoriesList[index],
                             ),
                           ),);
                   }),

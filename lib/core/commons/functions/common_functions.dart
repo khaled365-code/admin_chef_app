@@ -3,11 +3,16 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../features/auth/presentation/cubits/login_cubit/login_cubit.dart';
+import '../../utils/app_assets.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_styles.dart';
+import '../../widgets/space_widget.dart';
 
 void navigate({required BuildContext context ,required String route, Object? arg,bool replacement=false})
 {
@@ -18,7 +23,6 @@ void navigate({required BuildContext context ,required String route, Object? arg
   else
   {
     Navigator.pushNamed(context, route,arguments: arg);
-
   }
 }
 Future uploadImageToAPI(XFile image) async
@@ -27,51 +31,78 @@ Future uploadImageToAPI(XFile image) async
       filename: image.path.split('/').last);
 }
 
-
-void showToast({required String msg,required ToastStates toastStates}) async
-{
-  await Fluttertoast.showToast(
-      msg: msg,
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: getColor(toastStates),
-      textColor: Colors.white,
-      fontSize: 16.0
-  );
-
-}
-
 Future<XFile?> imagePick({required ImageSource imageSource}) async
 {
   XFile? image =await ImagePicker().pickImage(source: imageSource);
-  return image!=null? image : null;
+  return image;
 
 }
 
 enum ToastStates{success,error,warning}
 
-Color getColor(ToastStates toastStates)
+showToast({
+  required String msg,
+  required ToastStates toastStates,
+  ToastGravity? gravity,
+  required BuildContext context})
 {
-  switch (toastStates)
-  {
-    case ToastStates.success:
-      return AppColors.primaryColor;
-    case ToastStates.error:
-      return AppColors.primaryColor;
-    case ToastStates.warning:
-      return AppColors.primaryColor;
-  }
+  FToast().init(context);
+  FToast().showToast(
+    child: Container(
+      padding:  EdgeInsetsDirectional.only(start: 10.w,top: 20.h,bottom: 20.h ),
+      decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.circular(12.r),
+        color: toastStates == ToastStates.success ?
+        AppColors.c39AE53 :
+        toastStates==ToastStates.error?
+        AppColors.cDE4553:
+        AppColors.cFEC51A,
+      ),
+      child: Row(
+        children: [
+          toastStates==ToastStates.success?
+          SvgPicture.asset(ImageConstants.checkCircleIcon):
+          toastStates==ToastStates.error?
+          SvgPicture.asset(ImageConstants.errorIcon,
+            colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),):
+          SvgPicture.asset(ImageConstants.triangleWarningIcon,
+            colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),),
+          SpaceWidget(width: 10.w,),
+          Text(msg,
+              style: TextStyle(
+                fontSize: 16.sp,
+                fontFamily: 'sen',
+                color:AppColors.white,
+              )),
+        ],
+      ),
+    ),
+    gravity: gravity??ToastGravity.BOTTOM,
+    toastDuration: Duration(seconds: 5),
+  );
+
 }
 
-buildScaffoldMessenger({required BuildContext context,required String msg,SnackBarBehavior? snackBarBehavior})
+buildScaffoldMessenger({required BuildContext context,required String msg,SnackBarBehavior? snackBarBehavior,Widget? iconWidget,})
 {
 
   return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
-          msg,
-          style: AppTextStyles.regular16(context).copyWith(color: AppColors.white),
+        showCloseIcon: true,
+        content: Row(
+          children: [
+            iconWidget??SizedBox.shrink(),
+            iconWidget!=null?SpaceWidget(width: 10,):SizedBox.shrink(),
+            FittedBox(
+              fit:BoxFit.scaleDown,
+              alignment: AlignmentDirectional.centerStart,
+              child: Text(
+                msg,
+                style: AppTextStyles.bold15(context).copyWith(color: AppColors.white),
+              ),
+            ),
+          ],
         ),
         elevation: 0,
         backgroundColor: AppColors.primaryColor,
@@ -81,12 +112,53 @@ buildScaffoldMessenger({required BuildContext context,required String msg,SnackB
 
 }
 
-String formatDate(DateTime dateTime) {
+String formatDate({required DateTime dateTime,bool? monthName=false})
+{
   int year = dateTime.year;
   int month = dateTime.month;
   int day = dateTime.day;
-  return '$day/$month/$year';
+  if(monthName==true)
+  {
+    return '$day ${getMonthName(month)} $year';
+  }
+  else
+  {
+    return '$day/$month/$year';
+
+  }
 }
+
+String getMonthName(int month)
+{
+  switch(month)
+  {
+    case 1:
+      return 'January';
+    case 2:
+      return 'February';
+    case 3:
+      return 'March';
+    case 4:
+      return 'April';
+    case 5:
+      return 'May';
+    case 6:
+      return 'June';
+    case 7:
+      return 'July';
+    case 8:
+      return 'August';
+    case 9:
+      return 'September';
+    case 10:
+      return 'October';
+    case 11:
+      return 'November';
+    default:
+      return 'December';
+  }
+}
+
 String formatClock(DateTime dateTime)
 {
   int hour = dateTime.hour;
@@ -103,14 +175,21 @@ getAmorPm(DateTime dateTime)
     return 'AM';
   }
 }
-void handleErrorinListenerFun(LoginFailureState state, BuildContext context) {
-  if(state.errorModel.error!=null)
-  {
-    buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1,state.errorModel.error!.toString().length-1));
-  }
-  else
-  {
-    buildScaffoldMessenger(context: context, msg: state.errorModel.errorMessage!);
-  }
+
+Future<XFile> getImageXFileByUrl(String url) async
+{
+  var file = await DefaultCacheManager().getSingleFile(url);
+  XFile result = await XFile(file.path);
+  return result;
 }
+
+Future<String> getImagePathFromUrl(String url) async
+{
+  var file = await DefaultCacheManager().getSingleFile(url);
+  return file.path;
+}
+
+
+
+
 

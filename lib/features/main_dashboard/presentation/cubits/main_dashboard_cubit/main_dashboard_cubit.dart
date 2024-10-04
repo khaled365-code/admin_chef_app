@@ -5,7 +5,6 @@ import 'package:admin_chef_app/features/main_dashboard/data/repos/dashboard_repo
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/app_assets.dart';
-import '../../../data/models/categories_data_model.dart';
 import '../../../data/models/chefs_data/all_chefs_data_model.dart';
 
 part 'main_dashboard_state.dart';
@@ -17,7 +16,8 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
 
  final DashBoardRepoImplementation dashBoardRepoImplementation;
 
-  List<DrawerDataModel> firstDrawerDataList=[
+  List<DrawerDataModel> firstDrawerDataList=
+  [
     DrawerDataModel(image: ImageConstants.dashBoardIcon, text: 'Home',itemIsSelected: true),
     DrawerDataModel(image: ImageConstants.mealIcon, text: 'System Meals'),
     DrawerDataModel(image: ImageConstants.chefsIcon, text: 'System Chefs'),
@@ -69,36 +69,8 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
   }
 
 
-  List<CategoriesDataModel> categoriesList = [
-    CategoriesDataModel(categoryName: 'Beef'),
-    CategoriesDataModel(categoryName: 'Chicken'),
-    CategoriesDataModel(categoryName: 'Fish'),
-    CategoriesDataModel(categoryName: 'Seafood'),
-    CategoriesDataModel(categoryName: 'Pork'),
-    CategoriesDataModel(categoryName: 'Lamb'),
-    CategoriesDataModel(categoryName: 'Vegetarian'),
-    CategoriesDataModel(categoryName: 'Vegan'),
-    CategoriesDataModel(categoryName: 'Gluten-free'),
-    CategoriesDataModel(categoryName: 'Dairy-free'),
-    CategoriesDataModel(categoryName: 'Breakfast'),
-    CategoriesDataModel(categoryName: 'Lunch'),
-    CategoriesDataModel(categoryName: 'Dinner'),
-    CategoriesDataModel(categoryName: 'Appetizers'),
-    CategoriesDataModel(categoryName: 'Salads'),
-    CategoriesDataModel(categoryName: 'Soups'),
-    CategoriesDataModel(categoryName: 'Sandwiches'),
-    CategoriesDataModel(categoryName: 'Pasta'),
-    CategoriesDataModel(categoryName: 'Pizza'),
-    CategoriesDataModel(categoryName: 'Rice dishes'),
-    CategoriesDataModel(categoryName: 'Stir-fries'),
-    CategoriesDataModel(categoryName: 'Curries'),
-    CategoriesDataModel(categoryName: 'Desserts'),
-    CategoriesDataModel(categoryName: 'Baked goods'),
-    CategoriesDataModel(categoryName: 'Snacks')
-  ];
 
-
-  List<String>mealsImages=[
+  List<String>mealsImages= [
     ImageConstants.blackChocolateImage,
     ImageConstants.cartImage1,
     ImageConstants.cartImage2,
@@ -156,26 +128,21 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
     ImageConstants.vegetablePizzaImage
   ];
 
-  int selectedCategoryIndex=0;
-
-  updateSelectedCategoryIndex({required int currentIndex})
-  {
-    selectedCategoryIndex=currentIndex;
-    emit(UpdateSelectedCategoryIndex());
-  }
 
 
   AllSystemMealsModel? allSystemMealsModel;
 
-  getAllMealsFun()async
+  getSystemMealsFun()async
   {
     emit(GetAllMealsLoadingState());
     final response=await dashBoardRepoImplementation.getAllSystemMeals();
-    response.fold((errorModel) {
+    response.fold((errorModel)
+    {
       emit(GetAllMealsErrorState(errorModel: errorModel));
-    }, (AllSystemMealsModel) {
-      emit(GetAllMealsSuccessState(allSystemMealsModel: AllSystemMealsModel));
+    }, (AllSystemMealsModel)
+    {
       allSystemMealsModel=AllSystemMealsModel;
+      emit(GetAllMealsSuccessState(allSystemMealsModel: AllSystemMealsModel));
     });
 
   }
@@ -196,24 +163,30 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
   }
 
 
+
+
   AllChefsDataModel? allChefsData;
 
-  getAllSystemChefsFun()async
+  getSystemChefsFun()async
   {
     emit(GetAllChefsLoadingState());
     final result=await dashBoardRepoImplementation.getAllSystemChefs();
-    result.fold((errorModel) {
+    result.fold((errorModel)
+    {
      emit(GetAllChefsFailureState(errorModel: errorModel));
-    },(AllChefsDataModel) {
-      emit(GetAllChefsSuccessState(allChefsDataModel: AllChefsDataModel));
+    },(AllChefsDataModel)
+    {
       allChefsData=AllChefsDataModel;
+      emit(GetAllChefsSuccessState(allChefsDataModel: AllChefsDataModel));
     }, );
 
   }
+
   getChefRequestDesign()
   {
     emit(PerformChefRequestDesignState());
   }
+
 
   TextEditingController chefIdForControllerForChefRequest=TextEditingController();
   TextEditingController statusControllerForChefRequest=TextEditingController();
@@ -318,8 +291,6 @@ class MainDashboardCubit extends Cubit<MainDashboardState> {
       emit(AdminLogoutSuccessState(message: message));
     });
   }
-
-
 
 
 }

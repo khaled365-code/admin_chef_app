@@ -3,6 +3,9 @@
 
 class ImageConstants
 {
+
+
+  // images
   static const String adminLoginImage='assets/images/admin_login_image.png';
   static const String dishes4Image='assets/images/dishes_4_image.png';
   static const String admin3ItemsLogoIcon='assets/icons/admin_3items_logo.svg';
@@ -32,7 +35,7 @@ class ImageConstants
 
 
 
-
+  // icons
   static const String hitlerIcon='assets/icons/hitler_icon.svg';
   static const String dashBoardIcon='assets/icons/dashboard_icon.svg';
   static const String mealIcon='assets/icons/hamburger.svg';
@@ -43,11 +46,14 @@ class ImageConstants
   static const String trashIcon='assets/icons/trash_icon.svg';
   static const String chefIcon='assets/icons/user_chef_icon.svg';
   static const String viewAllNextIcon='assets/icons/view_all_next_icon.svg';
+  static const String checkCircleIcon='assets/icons/check-circle.svg';
+  static const String errorIcon='assets/icons/error_icon.svg';
+  static const String triangleWarningIcon='assets/icons/triangle_warning_icon.svg';
 
 
 
 
-
+  //Animations
   static const String noMealsAnim='assets/lotties/no_meals_lottie.json';
 
 

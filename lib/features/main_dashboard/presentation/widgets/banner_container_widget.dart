@@ -23,8 +23,7 @@ class BannerContainerWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
             image: const DecorationImage(
-                image: AssetImage(
-                  ImageConstants.bannerImage,)),
+                image: AssetImage(ImageConstants.bannerImage,)),
         ),
           child: Padding(
           padding:  EdgeInsetsDirectional.only(start: 82.w,),
@@ -46,16 +45,17 @@ class BannerContainerWidget extends StatelessWidget {
                           style: AppTextStyles.semiBold14(context)
                               .copyWith(color: AppColors.primaryColor)),
                       TextSpan(
-                          text: 'on chef app',
+                          text: 'on MealTime App',
                           style: AppTextStyles.semiBold14(context)
                               .copyWith(color: AppColors.c959895))
                     ],
               )),
               const SpaceWidget(height: 24,),
               ElevatedButton(
-                  onPressed: (){
+                  onPressed: ()
+                  {
                     MainDashboardCubit.get(context).allChefsData=null;
-                    MainDashboardCubit.get(context).getAllMealsFun();
+                    MainDashboardCubit.get(context).getSystemMealsFun();
                   },
                   child: Center(
                       child: FittedBox(

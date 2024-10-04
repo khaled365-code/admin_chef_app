@@ -19,6 +19,7 @@ class EmailLoginTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: TextInputType.emailAddress,
       validator: (value)
       {
         if(value!.isEmpty)
@@ -39,9 +40,15 @@ class EmailLoginTextField extends StatelessWidget {
       {
         if(loginCubit.loginFormKey.currentState!.validate() )
         {
+          loginCubit.loginFormKey.currentState!.save();
           if(loginCubit.termsCheckBoxValue==false)
           {
-            buildScaffoldMessenger(context: context, msg: 'You should accept terms and conditions to login');
+            buildScaffoldMessenger(
+              snackBarBehavior: SnackBarBehavior.floating,
+              context: context,
+              msg: 'You should accept terms and conditions to login',
+              iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+            );
           }
           else
           {
@@ -50,6 +57,10 @@ class EmailLoginTextField extends StatelessWidget {
                 password: loginCubit.passwordController.text);
           }
 
+        }
+        else
+        {
+          loginCubit.activateValidateMode();
         }
       },
       controller: loginCubit.emailController,

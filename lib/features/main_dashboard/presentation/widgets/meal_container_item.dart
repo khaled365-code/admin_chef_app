@@ -50,16 +50,16 @@ class _MealContainerItemState extends State<MealContainerItem> {
                   )),
                 ),
                 const SpaceWidget(height: 8,),
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(widget.systemMeals.description!,style: AppTextStyles.regular13(context).copyWith(
-                      color: widget.containerISSelected==true?AppColors.white:AppColors.c959895
-                  )),
-                ),
+                Text(
+                  maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    widget.systemMeals.description!,style: AppTextStyles.regular13(context).copyWith(
+                    color: widget.containerISSelected==true?AppColors.white:AppColors.c959895
+                )),
                 const SpaceWidget(height: 24,),
                 FittedBox(
                   fit: BoxFit.scaleDown,
-                  child: Text('Id :${widget.systemMeals.id!}',style: AppTextStyles.regular13(context).copyWith(
+                  child: Text('Id : ${widget.systemMeals.id!}',style: AppTextStyles.regular13(context).copyWith(
                       color: widget.containerISSelected==true?AppColors.white:AppColors.cEA6A12
                   )),
                 ),

@@ -3,11 +3,13 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CacheHelper {
+class CacheHelper
+{
   static late SharedPreferences sharedPreferences;
 
 //! Here The Initialize of cache .
-  init() async {
+  static init() async
+  {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
@@ -22,17 +24,22 @@ class CacheHelper {
 
 //! this method to put data in local database using key
 
-  Future<bool> saveData({required String key, required dynamic value}) async {
-    if (value is bool) {
+  Future<bool> saveData({required String key, required dynamic value}) async
+  {
+    if (value is bool)
+    {
       return await sharedPreferences.setBool(key, value);
     }
-    if (value is String) {
+    if (value is String)
+    {
       return await sharedPreferences.setString(key, value);
     }
 
-    if (value is int) {
+    if (value is int)
+    {
       return await sharedPreferences.setInt(key, value);
-    } else {
+    } else
+    {
       return await sharedPreferences.setDouble(key, value);
     }
   }

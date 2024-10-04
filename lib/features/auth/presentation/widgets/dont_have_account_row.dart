@@ -2,6 +2,7 @@
 
 import 'package:admin_chef_app/core/commons/functions/common_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -32,7 +33,11 @@ class DontHaveAccountRow extends StatelessWidget {
         GestureDetector(
           onTap: ()
           {
-            buildScaffoldMessenger(context: context, msg: 'New admin registration is locked right now');
+            buildScaffoldMessenger(
+              snackBarBehavior: SnackBarBehavior.floating,
+                context: context, msg: 'New admin registration is locked right now',
+              iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+            );
           },
           child: Text(
             'Click here to sign up',

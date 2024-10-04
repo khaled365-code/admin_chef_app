@@ -6,7 +6,8 @@ import '../database/cache/cache_helper.dart';
 import '../routes/admin_router.dart';
 import '../routes/admin_routes.dart';
 
-class DesktopRootLayout extends StatelessWidget {
+class DesktopRootLayout extends StatelessWidget
+{
   const DesktopRootLayout({super.key});
 
   @override

@@ -57,7 +57,7 @@ class MainDashboardScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 70.h),
+                                  padding: EdgeInsets.only(top: 45.h),
                                   child: const BannerContainerWidget(),
                                 ),
                                 BlocBuilder<MainDashboardCubit, MainDashboardState>(
@@ -65,169 +65,142 @@ class MainDashboardScreen extends StatelessWidget {
                                 {
                                   if(state is GetAllChefsLoadingState)
                                    {
-                                     return Container(
-                                           decoration: BoxDecoration(
-                                             color: AppColors.cFCF6EE,
-                                             borderRadius: BorderRadius.circular(24),
-                                           ),
-                                           child: Column(
-                                               crossAxisAlignment: CrossAxisAlignment.start,
-                                               children: [
-                                                 const SpaceWidget(height: 72,),
-                                                 Text('Please wait',
-                                                   style: AppTextStyles.bold23(context).copyWith(
-                                                       color: AppColors.c07143B
-                                                   ),),
-                                                 const SpaceWidget(height: 64,),
-                                                 GridView.builder(
-                                                   shrinkWrap: true,
-                                                   physics: const NeverScrollableScrollPhysics(),
-                                                   itemCount: 10,
-                                                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                     crossAxisCount: 2,
-                                                     crossAxisSpacing: 40,
-                                                     mainAxisSpacing: 40,
-                                                     mainAxisExtent: 290,
-                                                   ),
-                                                   itemBuilder: (context, index) =>
-                                                       const ChefShimmerContainer(),),
-                                                 const SpaceWidget(height: 72,),
-                                               ])
-
-                                       );
+                                     return Column(
+                                         crossAxisAlignment: CrossAxisAlignment.start,
+                                         children: [
+                                           const SpaceWidget(height: 72,),
+                                           Text('Please wait',
+                                             style: AppTextStyles.bold23(context).copyWith(
+                                                 color: AppColors.c07143B
+                                             ),),
+                                           const SpaceWidget(height: 64,),
+                                           GridView.builder(
+                                             shrinkWrap: true,
+                                             physics: const NeverScrollableScrollPhysics(),
+                                             itemCount: 10,
+                                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                               crossAxisCount: 2,
+                                               crossAxisSpacing: 40,
+                                               mainAxisSpacing: 40,
+                                               mainAxisExtent: 290,
+                                             ),
+                                             itemBuilder: (context, index) =>
+                                                 const ChefShimmerContainer(),),
+                                           const SpaceWidget(height: 72,),
+                                         ]);
                                    }
                                   if(MainDashboardCubit.get(context).allChefsData!=null)
                                     {
 
-                                      return Container(
-                                          decoration: BoxDecoration(
-                                            color: AppColors.cFCF6EE,
-                                            borderRadius: BorderRadius.circular(24),
-                                          ),
-                                          child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                const SpaceWidget(height: 72,),
-                                                Text('All Chefs',
-                                                  style: AppTextStyles.bold23(context).copyWith(
-                                                      color: AppColors.c07143B
-                                                  ),),
-                                                const SpaceWidget(height: 64,),
-                                                GridView.builder(
-                                                  shrinkWrap: true,
-                                                  physics: const NeverScrollableScrollPhysics(),
-                                                  itemCount: MainDashboardCubit.get(context).allChefsData!.chefs!.length,
-                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 2,
-                                                    crossAxisSpacing: 25,
-                                                    mainAxisSpacing: 40,
-                                                    mainAxisExtent: 300,
-                                                  ),
-                                                  itemBuilder: (context, index) =>
-                                                  GestureDetector(
-                                                    onTap: ()
-                                                    {
-                                                      MainDashboardCubit.get(context).updateChefIndex(index: index);
-                                                    },
-                                                    child: ChefDataContainer(
-                                                      containerIsSelected: MainDashboardCubit.get(context).currentChefIndex==index,
-                                                      chefsData: MainDashboardCubit.get(context).allChefsData!.chefs![index],
-                                                    ),
-                                                  )),
-                                                const SpaceWidget(height: 72,),
+                                      return Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            const SpaceWidget(height: 72,),
+                                            Text('All Chefs',
+                                              style: AppTextStyles.bold23(context).copyWith(
+                                                  color: AppColors.c07143B
+                                              ),),
+                                            const SpaceWidget(height: 64,),
+                                            GridView.builder(
+                                              shrinkWrap: true,
+                                              physics: const NeverScrollableScrollPhysics(),
+                                              itemCount: MainDashboardCubit.get(context).allChefsData!.chefs!.length,
+                                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 2,
+                                                crossAxisSpacing: 25,
+                                                mainAxisSpacing: 40,
+                                                mainAxisExtent: 300,
+                                              ),
+                                              itemBuilder: (context, index) =>
+                                              GestureDetector(
+                                                onTap: ()
+                                                {
+                                                  MainDashboardCubit.get(context).updateChefIndex(index: index);
+                                                },
+                                                child: ChefDataContainer(
+                                                  containerIsSelected: MainDashboardCubit.get(context).currentChefIndex==index,
+                                                  chefsData: MainDashboardCubit.get(context).allChefsData!.chefs![index],
+                                                ),
+                                              )),
+                                            const SpaceWidget(height: 72,),
 
 
 
-                                              ])
-
-                                      );
+                                          ]);
                                     }
                                   if(state is GetAllMealsLoadingState)
                                     {
-                                      return Container(
-                                          decoration: BoxDecoration(
-                                            color: AppColors.cFCF6EE,
-                                            borderRadius: BorderRadius.circular(24),
-                                          ),
-                                          child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                const SpaceWidget(height: 72,),
-                                                Text('Please wait',
-                                                  style: AppTextStyles.bold23(context).copyWith(
-                                                      color: AppColors.c07143B
-                                                  ),),
-                                                const SpaceWidget(height: 230,),
-                                                GridView.builder(
-                                                  shrinkWrap: true,
-                                                  physics: const NeverScrollableScrollPhysics(),
-                                                  itemCount: 10,
-                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 2,
-                                                    crossAxisSpacing: 50,
-                                                    mainAxisSpacing: 110,
-                                                    mainAxisExtent: 300,
-                                                  ),
-                                                  itemBuilder: (context, index) =>
-                                                      const MealShimmerContainer(),),
-                                                const SpaceWidget(height: 72,),
+                                      return Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            const SpaceWidget(height: 72,),
+                                            Text('Please wait',
+                                              style: AppTextStyles.bold23(context).copyWith(
+                                                  color: AppColors.c07143B
+                                              ),),
+                                            const SpaceWidget(height: 250,),
+                                            GridView.builder(
+                                              shrinkWrap: true,
+                                              physics: const NeverScrollableScrollPhysics(),
+                                              itemCount: 10,
+                                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 2,
+                                                crossAxisSpacing: 50,
+                                                mainAxisSpacing: 110,
+                                                mainAxisExtent: 300,
+                                              ),
+                                              itemBuilder: (context, index) =>
+                                                  const MealShimmerContainer(),),
+                                            const SpaceWidget(height: 72,),
 
 
 
-                                              ])
-
-                                      );
+                                          ]);
                                     }
                                   if(MainDashboardCubit.get(context).allSystemMealsModel!=null)
                                     {
-                                      return Container(
-                                          decoration: BoxDecoration(
-                                            color: AppColors.cFCF6EE,
-                                            borderRadius: BorderRadius.circular(24),
-                                          ),
-                                          child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                const SpaceWidget(height: 72,),
-                                                Text('All Meals',
-                                                  style: AppTextStyles.bold23(context).copyWith(
-                                                      color: AppColors.c07143B
+                                      return Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            const SpaceWidget(height: 72,),
+                                            Text('All Meals',
+                                              style: AppTextStyles.bold23(context).copyWith(
+                                                  color: AppColors.c07143B
+                                              ),),
+                                            const SpaceWidget(height: 250,),
+                                            GridView.builder(
+                                              padding: EdgeInsetsDirectional.zero,
+                                              shrinkWrap: true,
+                                              physics: const NeverScrollableScrollPhysics(),
+                                              itemCount: MainDashboardCubit.get(context).allSystemMealsModel!.meals!.length,
+                                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 2,
+                                                crossAxisSpacing: 50,
+                                                mainAxisSpacing: 110,
+                                                mainAxisExtent: 300,
+                                              ),
+                                              itemBuilder: (context, index) =>
+                                                  GestureDetector(
+                                                    onTap: ()
+                                                    {
+                                                      MainDashboardCubit.get(context).updateSelectedMeal(index: index);
+                                                    },
+                                                    child: MealContainerItem(
+                                                      mealImage: MainDashboardCubit.get(context).mealsImages[index],
+                                                      containerISSelected: MainDashboardCubit.get(context).currentMealIndex==index,
+                                                      systemMeals:MainDashboardCubit.get(context).allSystemMealsModel!.meals![index],
+                                                    ),
                                                   ),),
-                                                const SpaceWidget(height: 230,),
-                                                GridView.builder(
-                                                  padding: EdgeInsetsDirectional.zero,
-                                                  shrinkWrap: true,
-                                                  physics: const NeverScrollableScrollPhysics(),
-                                                  itemCount: MainDashboardCubit.get(context).allSystemMealsModel!.meals!.length,
-                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 2,
-                                                    crossAxisSpacing: 50,
-                                                    mainAxisSpacing: 110,
-                                                    mainAxisExtent: 300,
-                                                  ),
-                                                  itemBuilder: (context, index) =>
-                                                      GestureDetector(
-                                                        onTap: ()
-                                                        {
-                                                          MainDashboardCubit.get(context).updateSelectedMeal(index: index);
-                                                        },
-                                                        child: MealContainerItem(
-                                                          mealImage: MainDashboardCubit.get(context).mealsImages[index],
-                                                          containerISSelected: MainDashboardCubit.get(context).currentMealIndex==index,
-                                                          systemMeals:MainDashboardCubit.get(context).allSystemMealsModel!.meals![index],
-                                                        ),
-                                                      ),),
-                                                const SpaceWidget(height: 72,),
+                                            const SpaceWidget(height: 72,),
 
 
 
-                                              ])
-
-                                      );
+                                          ]);
                                     }
                                   if(state is PerformChefRequestDesignState ||
                                       state is DealWithChefRequestFailureState ||
-                                      state is DealWithChefRequestSuccessState || state is DealWithChefRequestLoadingState)
+                                      state is DealWithChefRequestSuccessState ||
+                                      state is DealWithChefRequestLoadingState)
                                     {
                                       return const ChefRequestWidget();
                                     }
@@ -260,27 +233,7 @@ class MainDashboardScreen extends StatelessWidget {
                                   }
                                   else
                                     {
-                                      return Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children:
-                                        [
-                                          const SpaceWidget(height: 72),
-                                          RichText(
-                                            text: TextSpan(children: [
-                                          TextSpan(
-                                              text: 'Welcome ',
-                                              style: AppTextStyles.bold23(context)
-                                                  .copyWith(
-                                                      color: AppColors.c07143B)),
-                                          TextSpan(
-                                              text: '🙂',
-                                              style: AppTextStyles.bold23(context)
-                                                  .copyWith(
-                                                      color:
-                                                          AppColors.primaryColor))
-                                        ]))
-                                      ],
-                                      );
+                                      return SizedBox.shrink();
                                     }
                                 },)
 

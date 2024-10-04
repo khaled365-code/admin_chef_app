@@ -38,7 +38,8 @@ class DashboardAppBar extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(CacheHelper().getData(key: ApiKeys.name),style: AppTextStyles.regular13(context).copyWith(
+                  Text(
+                    CacheHelper().getData(key: ApiKeys.name),style: AppTextStyles.regular13(context).copyWith(
                       fontFamily: 'Poppins',
                       color: AppColors.c07143B
                   ),),

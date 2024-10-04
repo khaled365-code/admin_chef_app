@@ -28,99 +28,146 @@ class AdminLoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.cFFF6EE,
       body: SafeArea(
-            child: Padding(
-              padding:  EdgeInsetsDirectional.only(start: 21.w),
-              child: CustomScrollView(
-                slivers: [
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Expanded(
-                            child: ImageAdminLoginSection()),
-                        Container(
-                          width: 87.w,
-                          color: AppColors.white,
-                        ),
-                        Expanded(
-                            child: Form(
-                              key: LoginCubit.get(context).loginFormKey,
-                              child: Container(
-                                color: AppColors.white,
-                                child: BlocConsumer<LoginCubit, LoginState>(
-                            listener: (context, state) {
-                              if (state is LoginSuccessState)
-                              {
-                                buildScaffoldMessenger(
-                                    context: context,
-                                    msg: 'You logged in successfully');
-                                navigate(
-                                    context: context,
-                                    route: AdminRoutes.mainDashboardScreen);
-                              }
-                              if (state is LoginFailureState)
-                              {
-                                handleErrorinListenerFun(state, context);
-                              }
-                            },
-                            builder: (context, state) {
-                              return Padding(
-                                padding:  EdgeInsetsDirectional.only(end:125.w,top: 52.h),
+            child: CustomScrollView(
+              slivers:
+              [
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:
+                    [
+                      const
+                      Expanded(
+                          child: ImageAdminLoginSection()),
+                      Container(
+                        width: 87.w,
+                        color: AppColors.white,
+                      ),
+                      Expanded(
+                      child: BlocConsumer<LoginCubit, LoginState>(
+                      listener: (context, state)
+                      {
+                        handleLoginActionListener(state, context);
+                      },
+                      builder: (context, state)
+                      {
+                        return Form(
+                          autovalidateMode: LoginCubit.get(context).loginAutoValidateMode,
+                          key: LoginCubit.get(context).loginFormKey,
+                          child: Container(
+                              color: AppColors.white,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.only(end: 125.w, top: 52.h),
                                 child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        ListTile(
-                                          contentPadding: EdgeInsetsDirectional.zero,
-                                          leading: SvgPicture.asset(ImageConstants.hitlerIcon),
-                                          title: Text('Chef Management System',
-                                            style: AppTextStyles.semiBold16(context).copyWith(
-                                                    color: AppColors.c07143B,
-                                                  fontFamily: 'Poppins'),
-                                          ),
-                                        ),
-                                        const SpaceWidget(height: 210,),
-                                        Text(
-                                          'Welcome !',
-                                          style: AppTextStyles.bold40(context).copyWith(
-                                                      color: AppColors.c07143B),
-                                        ),
-                                        const SpaceWidget(height: 14,),
-                                        Text(
-                                          'Welcome back, Please enter your details.',
-                                          style: AppTextStyles.regular16(context).copyWith(
-                                            color: AppColors.c959895,
-                                            fontFamily: 'Poppins',
-                                          ),
-                                        ),
-                                        const SpaceWidget(height: 30,),
-                                        EmailLoginTextField(loginCubit: LoginCubit.get(context)),
-                                        const SpaceWidget(height: 30,),
-                                        PasswordLoginTextField(loginCubit: LoginCubit.get(context)),
-                                        const SpaceWidget(height: 36,),
-                                        TermsAndConditionsRow(loginCubit: LoginCubit.get(context)),
-                                        const SpaceWidget(height: 36,),
-                                        state is LoginLoadingState ?
-                                        const Center(
-                                        child: CustomCircularProgressLoadingIndicator(
-                                          progressIndicatorColor: AppColors.primaryColor,))
-                                        : LoginButton(loginCubit: LoginCubit.get(context)),
-                                          const SpaceWidget(height: 45,),
-                                        const DontHaveAccountRow(),
-                                        const Spacer()
-                                      ],),
-                              );},),),
-                            ),),
-                      ],
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'MealTime Dashboard',
+                                      style: AppTextStyles.semiBold16(context)
+                                          .copyWith(
+                                          color: AppColors.c07143B,
+                                          fontFamily: 'Poppins'),
+                                    ),
+                                    const
+                                    SpaceWidget(
+                                      height: 210,
+                                    ),
+                                    Text(
+                                      'Welcome !',
+                                      style: AppTextStyles.bold40(context)
+                                          .copyWith(color: AppColors.c07143B),
+                                    ),
+                                    const SpaceWidget(
+                                      height: 32,
+                                    ),
+                                    Text(
+                                      'Welcome back, Please enter your details.',
+                                      style: AppTextStyles.regular16(context)
+                                          .copyWith(
+                                        color: AppColors.c959895,
+                                        fontFamily: 'Poppins',
+                                      ),
+                                    ),
+                                    const SpaceWidget(
+                                      height: 52,
+                                    ),
+                                    EmailLoginTextField(loginCubit: LoginCubit.get(context)),
+                                    const SpaceWidget(
+                                      height: 52,
+                                    ),
+                                    PasswordLoginTextField(
+                                        loginCubit: LoginCubit.get(context)),
+                                    const SpaceWidget(
+                                      height: 52,
+                                    ),
+                                    TermsAndConditionsRow(
+                                        loginCubit: LoginCubit.get(context)),
+                                    const SpaceWidget(
+                                      height: 70,
+                                    ),
+                                    state is LoginLoadingState
+                                        ? const Center(
+                                            child: CustomCircularProgressLoadingIndicator())
+                                        : LoginButton(
+                                            loginCubit: LoginCubit.get(context)),
+                                    const SpaceWidget(
+                                      height: 70,
+                                    ),
+                                    const DontHaveAccountRow(),
+                                    const Spacer()
+                                  ],
+                                ),
+                              )),
+                        );
+                      },
                     ),
                   ),
-                ],
-              ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         );
+  }
+
+  void handleLoginActionListener(LoginState state, BuildContext context)
+  {
+    if (state is LoginSuccessState)
+    {
+      buildScaffoldMessenger(
+          context: context,
+          msg: 'You logged in successfully',
+          iconWidget: SvgPicture.asset(ImageConstants.checkCircleIcon),
+          snackBarBehavior: SnackBarBehavior.floating);
+      navigate(context: context, route: AdminRoutes.mainDashboardScreen,replacement: true);
+    }
+    if (state is LoginFailureState)
+    {
+      loginFailureListenerFun(state, context);
+    }
+  }
+
+  void loginFailureListenerFun(LoginFailureState state, BuildContext context) {
+    if (state.errorModel.error != null)
+    {
+      buildScaffoldMessenger(
+        iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+          context: context,
+          msg: state.errorModel.error!.toString().substring(
+                  1,
+                  state.errorModel.error!.toString().length - 1));
+    }
+    else
+    {
+      buildScaffoldMessenger(
+          iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+          context: context,
+          msg: state.errorModel.errorMessage!);
+    }
   }
 
 

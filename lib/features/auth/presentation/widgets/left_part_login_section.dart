@@ -17,12 +17,16 @@ class ImageAdminLoginSection extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SpaceWidget(height: 52,),
-          Image.asset(
-            ImageConstants.dishes4Image,
+        children:
+        [
+         Spacer(),
+          AspectRatio(
+            aspectRatio: 854/765.94,
+            child: Image.asset(
+              ImageConstants.dishes4Image,
+            ),
           ),
-          const SpaceWidget(height: 52)
+         Spacer(),
         ],
       ),
     );

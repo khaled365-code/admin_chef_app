@@ -5,7 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
+class LoginCubit extends Cubit<LoginState>
+
+
+{
   LoginCubit({required this.authRepoImplementation}) : super(LoginInitial());
 
   static LoginCubit get(context)=>BlocProvider.of(context);
@@ -18,25 +21,36 @@ class LoginCubit extends Cubit<LoginState> {
 
   GlobalKey<FormState> loginFormKey = GlobalKey();
 
+  AutovalidateMode loginAutoValidateMode = AutovalidateMode.disabled;
+
+
+  activateValidateMode()
+  {
+    loginAutoValidateMode=AutovalidateMode.always;
+    emit(ActivateValidateMode());
+  }
+
 
   IconData suffixIcon = Icons.visibility_off;
-  bool isObsecureText = true;
+  bool passwordSecureText = true;
 
-  changeEyeShape() {
-    if (suffixIcon == Icons.visibility_off) {
+  changeEyeShape()
+  {
+    if (suffixIcon == Icons.visibility_off)
+    {
       suffixIcon = Icons.visibility;
-      isObsecureText = false;
+      passwordSecureText = false;
     }
-    else {
+    else
+    {
       suffixIcon = Icons.visibility_off;
-      isObsecureText = true;
+      passwordSecureText = true;
     }
 
     emit(ChangePasswordEyeShape());
   }
 
   bool termsCheckBoxValue=false;
-
   changeTermsCheckBoxValue()
   {
     termsCheckBoxValue=!termsCheckBoxValue;
@@ -50,9 +64,11 @@ class LoginCubit extends Cubit<LoginState> {
 
     final result = await authRepoImplementation.adminLogin(email: email, password:password);
 
-    result.fold((errorModel) {
+    result.fold((errorModel)
+    {
       emit(LoginFailureState(errorModel));
-    }, (message) {
+    }, (message)
+    {
       emit(LoginSuccessState(message));
     });
 

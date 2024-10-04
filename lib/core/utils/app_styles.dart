@@ -25,6 +25,14 @@ class AppTextStyles
       fontFamily: 'Playfair Display',
     );
   }
+  static  TextStyle bold15(BuildContext context)
+  {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, 15),
+      fontWeight: FontWeightHelper.bold,
+      fontFamily: 'Poppins',
+    );
+  }
   static  TextStyle bold23(BuildContext context)
   {
     return TextStyle(
@@ -170,7 +178,7 @@ class AppTextStyles
   {
     double scaleFactor=getScaleFactor(context);
     double responsiveFontSize=scaleFactor*currentFontSize;
-    double minFontSize=.8*currentFontSize;
+    double minFontSize=0.8*currentFontSize;
     double maxFontSize=1.2*currentFontSize;
     return responsiveFontSize.clamp(minFontSize, maxFontSize);
 

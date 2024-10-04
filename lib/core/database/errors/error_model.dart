@@ -2,7 +2,8 @@
 /// ErrorMessage : "validationError"
 /// Error : ["\"email\" must be a valid email"]
 
-class ErrorModel {
+class ErrorModel
+{
   ErrorModel({
       this.status, 
       this.errorMessage, 
@@ -10,7 +11,8 @@ class ErrorModel {
 
 
 
-  factory ErrorModel.fromJson(dynamic json) {
+  factory ErrorModel.fromJson(dynamic json)
+  {
     return ErrorModel(
         status : json['status'],
         errorMessage : json['ErrorMessage'],

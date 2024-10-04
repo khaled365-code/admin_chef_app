@@ -2,11 +2,14 @@
 
 
 import 'package:admin_chef_app/core/commons/functions/common_functions.dart';
+import 'package:admin_chef_app/core/utils/app_assets.dart';
 import 'package:admin_chef_app/core/widgets/custom_oulined_text_field.dart';
 import 'package:admin_chef_app/core/widgets/space_widget.dart';
 import 'package:admin_chef_app/features/main_dashboard/presentation/cubits/main_dashboard_cubit/main_dashboard_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/progress_loading_indicator.dart';
@@ -85,13 +88,15 @@ class ChefRequestWidget extends StatelessWidget {
                       btnColor: const WidgetStatePropertyAll(
                           AppColors.primaryColor
                       ),
-                      onPressessed: (){
+                      onPressessed: ()
+                      {
                         if(MainDashboardCubit.get(context).dealWithChefRequestFormKey.currentState!.validate())
                         {
                           MainDashboardCubit.get(context).dealWithChefRequestFun(
                               chefId: MainDashboardCubit.get(context).chefIdForControllerForChefRequest.text,
                               status: MainDashboardCubit.get(context).statusControllerForChefRequest.text);
                         }
+
                       },
                     );
                   }
@@ -101,24 +106,43 @@ class ChefRequestWidget extends StatelessWidget {
               {
                 if(state is DealWithChefRequestSuccessState)
                 {
-                  buildScaffoldMessenger(context: context, msg: state.successMessage);
-                  MainDashboardCubit.get(context).statusControllerForChefRequest.clear();
-                  MainDashboardCubit.get(context).chefIdForControllerForChefRequest.clear();
+                  chefRequestSuccessListener(context, state);
                 }
                 if(state is DealWithChefRequestFailureState)
                 {
-                  if(state.errorModel.error!=null)
-                  {
-                    buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1,state.errorModel.error!.toString().length-1));
-                  }
-                  else
-                  {
-                    buildScaffoldMessenger(context: context, msg: state.errorModel.errorMessage!);
-                  }
+                  chefRequestFailureListener(state, context);
                 }
               },)
         ],
       ),
     );
+  }
+
+  void chefRequestFailureListener(DealWithChefRequestFailureState state, BuildContext context) {
+    if (state.errorModel.error != null)
+    {
+      buildScaffoldMessenger(
+          iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+          context: context,
+          msg: state.errorModel.error!.toString().substring(
+              1,
+              state.errorModel.error!.toString().length - 1));
+    }
+    else
+    {
+      buildScaffoldMessenger(
+          iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25),
+          context: context,
+          msg: state.errorModel.errorMessage!);
+    }
+  }
+
+  void chefRequestSuccessListener(BuildContext context, DealWithChefRequestSuccessState state) {
+     buildScaffoldMessenger(
+        context: context,
+        msg: state.successMessage,
+        iconWidget: SvgPicture.asset(ImageConstants.checkCircleIcon),snackBarBehavior: SnackBarBehavior.floating);
+    MainDashboardCubit.get(context).statusControllerForChefRequest.clear();
+    MainDashboardCubit.get(context).chefIdForControllerForChefRequest.clear();
   }
 }

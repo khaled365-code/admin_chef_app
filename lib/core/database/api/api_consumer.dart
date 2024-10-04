@@ -12,7 +12,4 @@ abstract class ApiConsumer
 
 
 
-
-
-
 }

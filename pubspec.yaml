@@ -35,19 +35,49 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+
+  #Flutter Widgets that make it easy to implement the BLoC (Business Logic Component) design pattern. Built to be used with the bloc state management package
   flutter_bloc: ^8.1.6
+
+
+  #An SVG rendering and widget library for Flutter, which allows painting and displaying Scalable Vector Graphics 1.1 files.
   flutter_svg: ^2.0.10+1
+
+  #Toast Library for Flutter, Easily create toast messages in single line of code
   fluttertoast: ^8.2.6
+
+  #Flutter plugin for selecting images from the Android and iOS image library, and taking new pictures with the camera
   image_picker: ^1.1.2
+
+  #A powerful HTTP networking package, supports Interceptors, Aborting and canceling a request, Custom adapters, Transformers, etc
   dio: ^5.5.0+1
+
+  #Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android
   shared_preferences: ^2.2.3
+
+  #Functional Programming in Dart. Purify your Dart code using efficient immutable data structures, monads, lenses and other FP tools
   dartz: ^0.10.1
+
+  #This small library helps you to decode Json Web Tokens, you can also know if a JWT is already expired
   jwt_decoder: ^2.0.1
+
+  #A simple (but correct) dart class for validating email addresses
   email_validator: ^3.0.0
+
+  #Simple direct Service Locator that allows to decouple the interface from a concrete implementation and to access the concrete implementation from everywhere in your App"
   get_it: ^7.7.0
+
+  #Render After Effects animations natively on Flutter. This package is a pure Dart implementation of a Lottie player.
   lottie: ^3.1.2
+
+  #A package provides an easy way to add shimmer effect in Flutter project
   shimmer: ^3.0.0
+
+  #A flutter plugin for adapting screen and font size.Guaranteed to look good on different models
   flutter_screenutil: ^5.9.3
+
+  #Generic cache manager for flutter. Saves web files on the storages of the device and saves the cache info using sqflite.
+  flutter_cache_manager: ^3.4.1
 
 dev_dependencies:
   flutter_test:

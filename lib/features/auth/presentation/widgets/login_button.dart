@@ -23,14 +23,21 @@ class LoginButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
           ),
-          fixedSize: Size(1000.w, 140.h)
+          fixedSize: Size(MediaQuery.sizeOf(context).width, 140.h)
       ),
-      onPressed: () {
+      onPressed: ()
+      {
         if(loginCubit.loginFormKey.currentState!.validate() )
         {
+          loginCubit.loginFormKey.currentState!.save();
           if(loginCubit.termsCheckBoxValue==false)
           {
-            buildScaffoldMessenger(context: context, msg: 'You should accept terms and conditions to login');
+            buildScaffoldMessenger(
+              snackBarBehavior: SnackBarBehavior.floating,
+              context: context,
+              msg: 'You should accept terms and conditions to login',
+              iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+            );
           }
           else
           {
@@ -40,6 +47,10 @@ class LoginButton extends StatelessWidget {
           }
 
         }
+        else
+          {
+            loginCubit.activateValidateMode();
+          }
       },
       child: Text(
         'Sign in',

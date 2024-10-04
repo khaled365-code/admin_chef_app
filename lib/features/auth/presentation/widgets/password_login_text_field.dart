@@ -17,6 +17,7 @@ class PasswordLoginTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: TextInputType.text,
       validator: (value)
       {
         if(value!.isEmpty)
@@ -33,9 +34,15 @@ class PasswordLoginTextField extends StatelessWidget {
       {
         if(loginCubit.loginFormKey.currentState!.validate() )
         {
+          loginCubit.loginFormKey.currentState!.save();
           if(loginCubit.termsCheckBoxValue==false)
           {
-            buildScaffoldMessenger(context: context, msg: 'You should accept terms and conditions to login');
+            buildScaffoldMessenger(
+              snackBarBehavior: SnackBarBehavior.floating,
+              context: context,
+              msg: 'You should accept terms and conditions to login',
+              iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+            );
           }
           else
           {
@@ -45,10 +52,14 @@ class PasswordLoginTextField extends StatelessWidget {
           }
 
         }
+        else
+        {
+          loginCubit.activateValidateMode();
+        }
       },
       controller:
       loginCubit.passwordController,
-      obscureText: loginCubit.isObsecureText,
+      obscureText: loginCubit.passwordSecureText,
       decoration: InputDecoration(
           floatingLabelStyle:
           AppTextStyles.regular16(context).copyWith(
@@ -61,11 +72,11 @@ class PasswordLoginTextField extends StatelessWidget {
               fontFamily: 'Poppins'
           ),
           suffixIcon: GestureDetector(
-              onTap: () {
+              onTap: ()
+              {
                 loginCubit.changeEyeShape();
               },
-              child: Icon(
-                loginCubit.suffixIcon,color: AppColors.c959895,)),
+              child: Icon(loginCubit.suffixIcon,color: AppColors.c959895,)),
           enabledBorder: const UnderlineInputBorder(
               borderSide:  BorderSide(
                   color: AppColors.primaryColor)),

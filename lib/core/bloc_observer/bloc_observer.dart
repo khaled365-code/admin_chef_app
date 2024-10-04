@@ -1,6 +1,8 @@
 
 
 
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyBlocObserver implements BlocObserver {
@@ -8,28 +10,28 @@ class MyBlocObserver implements BlocObserver {
 
   @override
   void onChange(BlocBase bloc, Change change) {
-    print('cubit $bloc is changed to $change');
+    log('cubit $bloc is changed to $change');
   }
 
   @override
   void onClose(BlocBase bloc) {
-    print('cubit $bloc is closed');
+    log('cubit $bloc is closed');
   }
 
   @override
   void onCreate(BlocBase bloc) {
-    print('cubit $bloc is created');
+    log('cubit $bloc is created');
   }
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    print('cubit $bloc has error $error');
+    log('cubit $bloc has error $error');
 
   }
 
   @override
   void onEvent(Bloc bloc, Object? event) {
-    print('cubit $bloc has event $event');
+    print('$bloc has event $event');
   }
 
   @override

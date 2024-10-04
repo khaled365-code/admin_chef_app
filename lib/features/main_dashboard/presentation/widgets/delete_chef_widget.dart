@@ -1,7 +1,9 @@
 
 
+import 'package:admin_chef_app/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/commons/functions/common_functions.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -45,19 +47,17 @@ class DeleteChefWidget extends StatelessWidget {
             listener: (context, state) {
               if(state is DeleteChefSuccessState)
               {
-                buildScaffoldMessenger(context: context, msg: 'Chef deleted successfully from the system !');
+                buildScaffoldMessenger(
+                    context: context,
+                    msg: 'Chef deleted successfully from the system !',
+                  iconWidget: SvgPicture.asset(ImageConstants.checkCircleIcon),
+                  snackBarBehavior: SnackBarBehavior.floating
+                );
                 MainDashboardCubit.get(context).deleteChefIdController.clear();
               }
               if(state is DeleteChefFailureState)
               {
-                if(state.errorModel.error!=null)
-                {
-                  buildScaffoldMessenger(context: context, msg: state.errorModel.error!.toString().substring(1,state.errorModel.error!.toString().length-1));
-                }
-                else
-                {
-                  buildScaffoldMessenger(context: context, msg: state.errorModel.errorMessage!);
-                }
+                handleDeleteChefErrorListenerFun(state, context);
               }
             },
             builder: (context, state) {
@@ -76,7 +76,8 @@ class DeleteChefWidget extends StatelessWidget {
                     fontFamily: 'Poppins'
                 ),
                 btnColor: const WidgetStatePropertyAll(AppColors.primaryColor),
-                onPressessed: () {
+                onPressessed: ()
+                {
                   if (MainDashboardCubit.get(context)
                       .deleteChefFormKey
                       .currentState!
@@ -91,5 +92,24 @@ class DeleteChefWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void handleDeleteChefErrorListenerFun(DeleteChefFailureState state, BuildContext context) {
+     if (state.errorModel.error != null)
+    {
+      buildScaffoldMessenger(
+          iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
+          context: context,
+          msg: state.errorModel.error!.toString().substring(
+              1,
+              state.errorModel.error!.toString().length - 1));
+    }
+    else
+    {
+      buildScaffoldMessenger(
+          iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25),
+          context: context,
+          msg: state.errorModel.errorMessage!);
+    }
   }
 }

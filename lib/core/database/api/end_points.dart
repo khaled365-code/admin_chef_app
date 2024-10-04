@@ -3,6 +3,7 @@ import 'dart:convert';
 
 class EndPoints
 {
+
   static const String baseUrl="https://food-api-omega.vercel.app/api/v1";
 
 
@@ -35,10 +36,5 @@ class EndPoints
   {
     return '$baseUrl/chef/delete?id=$chefId';
   }
-
-
-
-
-
 
 }
