@@ -55,7 +55,9 @@ class BannerContainerWidget extends StatelessWidget {
                   onPressed: ()
                   {
                     MainDashboardCubit.get(context).allChefsData=null;
+                    MainDashboardCubit.get(context).updateFirstDrawerListShape(currentIndex: 1);
                     MainDashboardCubit.get(context).getSystemMealsFun();
+
                   },
                   child: Center(
                       child: FittedBox(

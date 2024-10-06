@@ -40,7 +40,6 @@ class DeleteChefWidget extends StatelessWidget {
                 return null;
               }
             },
-            onFieldSubmitted: (value){},
           ),
           const SpaceWidget(height: 68,),
           BlocConsumer<MainDashboardCubit, MainDashboardState>(
@@ -98,6 +97,7 @@ class DeleteChefWidget extends StatelessWidget {
      if (state.errorModel.error != null)
     {
       buildScaffoldMessenger(
+          snackBarBehavior: SnackBarBehavior.floating,
           iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
           context: context,
           msg: state.errorModel.error!.toString().substring(
@@ -107,6 +107,7 @@ class DeleteChefWidget extends StatelessWidget {
     else
     {
       buildScaffoldMessenger(
+          snackBarBehavior: SnackBarBehavior.floating,
           iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25),
           context: context,
           msg: state.errorModel.errorMessage!);

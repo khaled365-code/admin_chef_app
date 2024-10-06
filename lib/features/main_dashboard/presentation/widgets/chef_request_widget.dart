@@ -31,7 +31,8 @@ class ChefRequestWidget extends StatelessWidget {
             hintText: 'please write chef id here !',
             labelText: 'Chef Id',
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            validator: (value){
+            validator: (value)
+            {
               if(value!.isEmpty)
               {
                 return 'you must specify chef id !';
@@ -41,7 +42,6 @@ class ChefRequestWidget extends StatelessWidget {
                 return null;
               }
             },
-            onFieldSubmitted: (value){},
           ),
           const SpaceWidget(height: 52,),
           CustomOulinedTextField(
@@ -60,7 +60,6 @@ class ChefRequestWidget extends StatelessWidget {
                 return null;
               }
             },
-            onFieldSubmitted: (value){},
             hintText: 'must be one of pending , accepted , rejected , all',
             labelText: 'Status',
             floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -122,6 +121,7 @@ class ChefRequestWidget extends StatelessWidget {
     if (state.errorModel.error != null)
     {
       buildScaffoldMessenger(
+          snackBarBehavior: SnackBarBehavior.floating,
           iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
           context: context,
           msg: state.errorModel.error!.toString().substring(
@@ -131,6 +131,7 @@ class ChefRequestWidget extends StatelessWidget {
     else
     {
       buildScaffoldMessenger(
+          snackBarBehavior: SnackBarBehavior.floating,
           iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25),
           context: context,
           msg: state.errorModel.errorMessage!);

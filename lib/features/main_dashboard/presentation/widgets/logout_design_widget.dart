@@ -60,6 +60,6 @@ class LogoutDesignWidget extends StatelessWidget {
         iconWidget: SvgPicture.asset(ImageConstants.checkCircleIcon),
         snackBarBehavior: SnackBarBehavior.floating
     );
-    navigate(context: context, route: AdminRoutes.adminLoginScreen);
+    navigate(context: context, route: AdminRoutes.adminLoginScreen,replacement: true);
   }
 }

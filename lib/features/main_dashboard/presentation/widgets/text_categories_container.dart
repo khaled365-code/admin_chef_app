@@ -32,8 +32,8 @@ class TextCategoriesContainer extends StatelessWidget {
               Padding(
                 padding:  EdgeInsets.symmetric(horizontal: 24.w),
                 child: const Divider(
-                  color: AppColors.cE9ECEF,
-                  thickness: 2,
+                  color: AppColors.cE3E1E1,
+                  thickness: 1,
                 ),
               ),
               const SpaceWidget(height: 43,),
@@ -45,14 +45,15 @@ class TextCategoriesContainer extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: CategoriesCubit.get(context).categoriesList.length,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio:128/48 ,
+                        childAspectRatio:150/48 ,
                         mainAxisSpacing: 24,
                         crossAxisSpacing: 32,
                         crossAxisCount: 3,),
                       padding:  EdgeInsetsDirectional.only(start: 24.w, end: 24.w),
                       itemBuilder: (context, index) =>
                           GestureDetector(
-                            onTap: () {
+                            onTap: ()
+                            {
                               CategoriesCubit.get(context).updateSelectedCategoryIndex(currentIndex: index);
                             },
                             child: CategoryContainerItem(

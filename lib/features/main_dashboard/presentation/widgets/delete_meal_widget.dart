@@ -41,7 +41,6 @@ class DeleteMealWidget extends StatelessWidget {
                 return null;
               }
             },
-            onFieldSubmitted: (value){},
           ),
           const SpaceWidget(height: 68,),
           BlocConsumer<MainDashboardCubit, MainDashboardState>(
@@ -101,15 +100,15 @@ class DeleteMealWidget extends StatelessWidget {
     if (state.errorModel.error != null)
     {
       buildScaffoldMessenger(
+        snackBarBehavior: SnackBarBehavior.floating,
           iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25,),
           context: context,
-          msg: state.errorModel.error!.toString().substring(
-              1,
-              state.errorModel.error!.toString().length - 1));
+          msg: state.errorModel.error!.toString().substring(1, state.errorModel.error!.toString().length - 1));
     }
     else
     {
       buildScaffoldMessenger(
+          snackBarBehavior: SnackBarBehavior.floating,
           iconWidget: Icon(Icons.error_outline,color: AppColors.white,size: 25),
           context: context,
           msg: state.errorModel.errorMessage!);
